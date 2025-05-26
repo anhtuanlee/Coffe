@@ -1,0 +1,66 @@
+.wrapCursor {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  pointer-events: none;
+}
+
+.cursor {
+  --circle: 50%;
+  --dashoffset: 487;
+  pointer-events: none;
+  position: absolute;
+  border-radius: 100%;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  display: none;
+
+  @include pcSmall {
+    width: rem(100px);
+    height: rem(100px);
+    display: block;
+    cursor: pointer;
+  }
+
+  img {
+    width: rem(12px);
+    height: rem(12px);
+  }
+
+  &_view {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(8px);
+    background-color: var(--white);
+    clip-path: circle(var(--circle) at 50% 50%);
+    border-radius: 100%;
+
+    &_inner {
+      display: flex;
+      gap: rem(12px);
+      align-items: center;
+      line-height: 1;
+      overflow: hidden;
+
+      :global {
+        .cursor__text {
+          display: block;
+          line-height: 1;
+          padding-top: 0.2em;
+        }
+      }
+    }
+
+    svg {
+      width: rem(12px);
+      height: rem(12px);
+    }
+  }
+}

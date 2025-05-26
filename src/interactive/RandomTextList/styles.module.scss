@@ -1,0 +1,23 @@
+.listContent {
+  position: relative;
+  display: inline-block;
+  transition: width 0.4s ease-out;
+  text-align: left;
+  clip-path: inset(0);
+  padding-bottom: 0.1em;
+
+  &_run {
+    position: absolute !important;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    white-space: nowrap;
+  }
+
+  &_bg {
+    visibility: hidden;
+    display: inline-block;
+    white-space: nowrap;
+  }
+}

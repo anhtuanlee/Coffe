@@ -1,0 +1,38 @@
+.transition {
+  position: fixed;
+  z-index: 99999999;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg {
+  will-change: opacity;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+}
+
+.inner {
+  width: rem(375px);
+  height: rem(210px);
+  will-change: transform;
+  position: relative;
+  z-index: 2;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

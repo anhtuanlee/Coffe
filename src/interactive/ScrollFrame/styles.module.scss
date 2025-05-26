@@ -1,0 +1,25 @@
+.frames {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  canvas {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  &_inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.wrap-canvas {
+  font-size: 0;
+  line-height: 0;
+}

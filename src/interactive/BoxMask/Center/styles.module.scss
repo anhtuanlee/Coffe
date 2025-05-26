@@ -1,0 +1,6 @@
+.boxMaskCenter {
+  position: relative;
+  --clip: inset(0% 50%);
+  clip-path: var(--clip);
+  display: block;
+}

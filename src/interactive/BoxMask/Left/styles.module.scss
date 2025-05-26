@@ -1,0 +1,14 @@
+.boxMaskBottomWrapper {
+  &:not(.isComplete) {
+    overflow: hidden;
+
+    .boxMaskBottom {
+      overflow: hidden;
+    }
+  }
+}
+
+.boxMaskBottom {
+  position: relative;
+  display: block;
+}

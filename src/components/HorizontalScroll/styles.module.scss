@@ -1,0 +1,30 @@
+.horizontalScroll {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background: var(--black-grey);
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity, pointer-events;
+  transition:
+    opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1),
+    pointer-events 1s linear;
+
+  :global {
+    .lenis-smooth {
+      overflow: auto;
+    }
+  }
+
+  &_close {
+    position: fixed;
+    z-index: 9;
+    right: var(--gap-x);
+    top: var(--gap-x);
+    left: auto;
+    transform: translate(#{rem(22px)}, #{rem(-22px)});
+  }
+}

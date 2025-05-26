@@ -1,0 +1,71 @@
+.heading {
+  font-family: var(--neue-montreal);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+
+  &__320 {
+    font-size: rem(320px);
+    letter-spacing: rem(-9.6px);
+  }
+  &__160 {
+    line-height: 105%;
+    font-size: rem(56px);
+    font-weight: 400;
+
+    @include min-tablet {
+      font-size: rem(90px);
+    }
+    @include pcSmall {
+      font-size: rem(160px);
+      line-height: 80%;
+    }
+  }
+  &__90 {
+    font-size: rem(36px);
+    line-height: 105%;
+    letter-spacing: -0.5px;
+
+    @include min-tablet {
+      font-size: rem(60px);
+      letter-spacing: -0.1px;
+    }
+    @include pcSmall {
+      font-size: rem(90px);
+      letter-spacing: -0.9px;
+    }
+  }
+  &__60 {
+    font-size: rem(24px);
+    font-weight: 400;
+    line-height: 110%;
+
+    @include pcSmall {
+      font-size: rem(60px);
+    }
+  }
+
+  &__white {
+    color: var(--white);
+  }
+
+  &__black {
+    color: var(--dark);
+  }
+
+  &__black-grey {
+    color: var(--black-grey);
+  }
+  &__black-matter {
+    color: var(--black-matter);
+  }
+  &__light-grey {
+    color: var(--light-grey);
+  }
+  &__light-grey-4 {
+    color: var(--light-grey-4);
+  }
+  &__silver {
+    color: var(--silver);
+  }
+}

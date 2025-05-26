@@ -1,0 +1,44 @@
+.button {
+  --btn-color: var(--silver);
+  --line-color: var(--silver);
+  --line-size: 0;
+
+  color: var(--btn-color);
+  font-family: var(--neue-montreal);
+  font-style: normal;
+  // font-weight: 500;
+  width: max-content;
+  line-height: 115%;
+  cursor: pointer;
+
+  &__24 {
+    font-size: rem(24px);
+  }
+
+  &__white {
+    --btn-color: var(--white);
+    --line-color: var(--white);
+  }
+
+  &__black-grey {
+    --btn-color: var(--black-grey);
+    --line-color: var(--black-grey);
+  }
+
+  &__line {
+    &_0 {
+      --line-size: 0;
+    }
+    &_1 {
+      --line-size: 1px;
+    }
+    &_2 {
+      --line-size: 2px;
+    }
+  }
+
+  & > span:last-child {
+    border-bottom-color: var(--line-color);
+    border-bottom-width: var(--line-size);
+  }
+}

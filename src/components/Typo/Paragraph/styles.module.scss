@@ -1,0 +1,98 @@
+.paragraph {
+  font-family: var(--neue-montreal);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 115%;
+
+  &__32 {
+    font-weight: 400;
+    line-height: 116%;
+    font-size: rem(18px);
+
+    @include min-tablet {
+      font-size: rem(18px);
+    }
+    @include pcSmall {
+      font-size: rem(32px);
+    }
+  }
+
+  &__24 {
+    line-height: 120%;
+    font-weight: 400;
+    font-style: normal;
+    font-size: rem(16px);
+    span {
+      font-weight: 400;
+    }
+
+    @include min-tablet {
+      font-size: rem(16px);
+    }
+    @include pcSmall {
+      font-size: rem(24px);
+    }
+  }
+
+  &__18 {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 116%;
+    font-size: rem(14px);
+
+    @include min-tablet {
+      font-size: rem(14px);
+    }
+    @include pcSmall {
+      font-size: rem(18px);
+    }
+  }
+  &__14 {
+    line-height: 116%;
+    font-weight: 500;
+    font-size: rem(10px);
+    letter-spacing: calc(0.05 * 10px);
+
+    @include min-tablet {
+      font-size: rem(10px);
+    }
+    @include pcSmall {
+      letter-spacing: calc(0.05 * 14px);
+      font-size: rem(14px);
+    }
+  }
+  &__12 {
+    line-height: 116%;
+    font-weight: 500;
+    letter-spacing: calc(0.05 * 10px);
+    font-size: rem(10px);
+
+    @include pcSmall {
+      letter-spacing: calc(0.05 * 12px);
+      font-size: rem(12px);
+    }
+  }
+  &__white {
+    color: var(--white);
+  }
+
+  &__black {
+    color: var(--dark);
+  }
+
+  &__black-grey {
+    color: var(--black-grey);
+  }
+  &__black-matter {
+    color: var(--black-matter);
+  }
+  &__light-grey {
+    color: var(--light-grey);
+  }
+  &__silver {
+    color: var(--silver);
+  }
+  &__light-grey-3 {
+    color: var(--light-grey-3);
+  }
+}

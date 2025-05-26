@@ -1,0 +1,51 @@
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+//forInteractive RandomeTextLines
+.target-size {
+  position: absolute;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.grid {
+  column-gap: var(--gap-x);
+}
+
+.container {
+  max-width: unset !important;
+  padding-left: rem(20px) !important;
+  padding-right: rem(20px) !important;
+  --gap-x: #{rem(16px)} !important;
+
+  @include min-tablet {
+    max-width: unset !important;
+    padding-left: rem(32px) !important;
+    padding-right: rem(32px) !important;
+    --gap-x: #{rem(20px)} !important;
+  }
+  @include pcSmall {
+    max-width: unset !important;
+    padding-left: rem(40px) !important;
+    padding-right: rem(40px) !important;
+    --gap-x: #{rem(40px)} !important;
+  }
+}

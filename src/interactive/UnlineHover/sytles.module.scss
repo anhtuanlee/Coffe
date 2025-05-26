@@ -1,0 +1,29 @@
+.textUnderline {
+  --line-color: var(--white);
+
+  overflow: hidden;
+  position: relative;
+
+  &_line {
+    display: block;
+    border-bottom: 1px solid var(--line-color);
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+
+    &__clone {
+      position: absolute;
+      left: -100%;
+      bottom: 0;
+    }
+  }
+
+  &__white {
+    --line-color: var(--white);
+  }
+
+  &__black-grey {
+    --line-color: var(--black-grey);
+  }
+}
