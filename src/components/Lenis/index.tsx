@@ -40,7 +40,7 @@ export default function LenisScroller({ children }: ISmoothScroller): React.Reac
   });
 
   return (
-    <ReactLenis isStopped={true} root ref={lenisRef} autoRaf={false}>
+    <ReactLenis root ref={lenisRef} autoRaf={false}>
       {children}
     </ReactLenis>
   );

@@ -94,10 +94,10 @@ ul {
 
 html {
   box-sizing: border-box;
-  font-size: 10px !important;
+  font-size: 16px !important;
 
   @include pcSmall {
-    font-size: vw(10px) !important;
+    font-size: vw(16px) !important;
   }
 }
 

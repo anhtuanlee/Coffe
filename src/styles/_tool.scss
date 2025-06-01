@@ -1,18 +1,23 @@
 @use 'sass:math' as math;
 
-@function rem($px, $base: 10px) {
+@function rem($px, $base: 16px) {
   @return math.div($px, $base) * 1rem;
 }
 
-@function em($px, $base: 10px) {
+@function em($px, $base: 16px) {
   @return math.div($px, $base) * 1em;
 }
 
-@function vh($px, $base: 1080px) {
+@mixin with-will-change() {
+  backface-visibility: hidden;
+  inset: 0;
+}
+
+@function vh($px, $base: 1117px) {
   @return math.div($px, $base) * 100vh;
 }
 
-@function vw($px, $base: 1920px) {
+@function vw($px, $base: 1728px) {
   @return math.div($px, $base) * 100vw;
 }
 

@@ -7,8 +7,11 @@ import React, { PropsWithChildren, useRef } from 'react';
 import { IAnimationProps } from '@/types/animation';
 
 import s from './styles.module.scss';
+import { cn } from '@/utils/uiHelper';
 
-interface IBoxMaskLeft extends PropsWithChildren, IAnimationProps {}
+interface IBoxMaskLeft extends PropsWithChildren, IAnimationProps {
+  className?: string;
+}
 
 export default function BoxMaskLeft({
   children,
@@ -20,6 +23,7 @@ export default function BoxMaskLeft({
   delayEnter,
   delayTrigger,
   isObserver,
+  className,
 }: IBoxMaskLeft): React.ReactElement {
   const refTrigger = useRef<HTMLDivElement>(null);
   const refMaskWrapper = useRef<HTMLDivElement>(null);
@@ -48,8 +52,8 @@ export default function BoxMaskLeft({
     return <div>Error: Invalid children element</div>;
   }
   return (
-    <div className={s.boxMaskBottomWrapper} ref={refTrigger}>
-      <div ref={refMaskWrapper} className={s.boxMaskBottom}>
+    <div className={cn(s.boxMaskBottomWrapper, className)} ref={refTrigger}>
+      <div ref={refMaskWrapper} className={cn(s.boxMaskBottom, className)}>
         {React.cloneElement(children, {
           ...{
             ref: refMaskElement,

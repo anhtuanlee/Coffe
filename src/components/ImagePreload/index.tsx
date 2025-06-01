@@ -34,7 +34,7 @@ const ImagePreload = forwardRef<HTMLImageElement, IImagePreload>((props, ref) =>
   return (
     <div ref={ref} className={`${s.imagePreload} ${s[obfit]} ${props.className} imagePreload`}>
       <Image
-        className={`${props.className} ${s.imagePreload_origin}`}
+        className={` ${s.imagePreload_origin}`}
         onLoad={onLoaded}
         sizes={`(max-width: ${w}px) 100vw, ${w}px`}
         {...props}
@@ -42,15 +42,7 @@ const ImagePreload = forwardRef<HTMLImageElement, IImagePreload>((props, ref) =>
         height={h}
         alt={props.alt}
         quality={100}
-      />
-      <Image
-        ref={imageLoadedRef}
-        className={`${props.className} ${s.imagePreload_placeholder}`}
-        src={props.src}
-        width={100}
-        height={100}
         loading="eager"
-        alt="eager"
       />
     </div>
   );

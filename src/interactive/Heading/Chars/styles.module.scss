@@ -1,8 +1,8 @@
 .headingChars {
-  :global {
-    .line {
-      overflow: hidden;
-      padding-bottom: 0.05em;
-    }
+  :global(.line) {
+    overflow: hidden;
+  }
+  :global(.char) {
+    will-change: transform, opacity;
   }
 }

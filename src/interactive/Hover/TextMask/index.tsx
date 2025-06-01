@@ -14,14 +14,24 @@ export type IHover = { onHover: () => void; onLeave: () => void };
 interface IProp extends PropsWithChildren {
   refFuns: MutableRefObject<IHover | undefined>;
   immutable?: boolean;
+  className?: string;
+  classNameClone?: string;
+  isReverse?: boolean;
 }
-export default function TextMask({ children, refFuns, immutable = false }: IProp): ReactElement {
+export default function TextMask({
+  children,
+  refFuns,
+  immutable = false,
+  className,
+  isReverse = false,
+  classNameClone,
+}: IProp): ReactElement {
   const refContent = useRef<HTMLSpanElement>(null);
   const { contextSafe } = useGSAP(
     () => {
       const lists: HTMLElement[] = gsap.utils.toArray('.js-text');
       gsap.killTweensOf(lists);
-      gsap.set(lists[1], { yPercent: 110 });
+      gsap.set(lists[1], { y: '110%' });
     },
     { scope: refContent }
   );
@@ -30,30 +40,52 @@ export default function TextMask({ children, refFuns, immutable = false }: IProp
     const sps: HTMLElement[] = gsap.utils.toArray('.js-text');
     gsap.killTweensOf(sps);
 
-    gsap.to(sps[0], { yPercent: -110, ease: 'power3.out', duration: 0.6, overwrite: 'auto' });
-    gsap.fromTo(
-      sps[1],
-      { yPercent: 110 },
-      {
-        yPercent: 0,
-        ease: 'power3.out',
-        duration: 0.6,
-        overwrite: 'auto',
-      }
-    );
+    sps[0] &&
+      gsap.fromTo(
+        sps[0],
+        {
+          y: 0,
+        },
+        { y: '-110%', ease: 'power3.out', duration: 0.6, overwrite: 'auto' }
+      );
+    sps[1] &&
+      gsap.fromTo(
+        sps[1],
+        { y: '110%' },
+        {
+          y: 0,
+          ease: 'power3.out',
+          duration: 0.6,
+          overwrite: 'auto',
+        }
+      );
   });
 
   const onLeave = contextSafe((): void => {
     const sps: HTMLElement[] = gsap.utils.toArray('.js-text');
     gsap.killTweensOf(sps);
 
-    gsap.to(sps[0], { yPercent: 0, ease: 'power3.out', duration: 0.6, overwrite: 'auto' });
-    gsap.to(sps[1], {
-      yPercent: 110,
-      ease: 'power3.out',
-      duration: 0.6,
-      overwrite: 'auto',
-    });
+    sps[0] &&
+      gsap.fromTo(
+        sps[0],
+        {
+          y: isReverse ? '110%' : '-110%',
+        },
+        { y: 0, ease: 'power3.out', duration: 0.6, overwrite: 'auto' }
+      );
+    sps[1] &&
+      gsap.fromTo(
+        sps[1],
+        {
+          y: 0,
+        },
+        {
+          y: isReverse ? '-110%' : '110%',
+          ease: 'power3.out',
+          duration: 0.6,
+          overwrite: 'auto',
+        }
+      );
   });
 
   useImperativeHandle(refFuns, () => ({
@@ -61,12 +93,12 @@ export default function TextMask({ children, refFuns, immutable = false }: IProp
     onLeave,
   }));
   return (
-    <span ref={refContent} className={`${s.textMask} textMask`}>
-      <span className={`block js-text ${s.textMask_el} textMask_el`}>{children}</span>
+    <span ref={refContent} className={`${s.textMask} ${className} textMask`}>
+      <span className={`js-text block ${s.textMask_el} textMask_el`}>{children}</span>
       <span
-        className={`block js-text ${s.textMask_el} ${s.textMask_el__clone} 
-        ${immutable && s.textMask_el__imutable}
-        textMask_el textMask_el__clone`}
+        className={`js-text block ${s.textMask_el} ${s.textMask_el__clone} ${
+          immutable && s.textMask_el__imutable
+        } textMask_el textMask_el__clone ${classNameClone}`}
       >
         {children}
       </span>

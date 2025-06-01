@@ -1,0 +1,23 @@
+@import '../../node_modules/swiper/swiper.min.css';
+
+@starting-style {
+  .swiper-pagination-progressbar {
+    opacity: 1 !important;
+  }
+  .swiper-pagination-progressbar .swiper-pagination-lock {
+    opacity: 1 !important;
+  }
+}
+
+.swiper-pagination-progressbar {
+  opacity: 1 !important;
+  transition:
+    opacity 0.3s ease,
+    display 1s ease allow-discrete;
+  &.swiper-pagination-lock {
+    opacity: 0 !important;
+    transition:
+      opacity 0.3s ease,
+      display 0.3s ease allow-discrete !important;
+  }
+}

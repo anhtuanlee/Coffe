@@ -8,11 +8,8 @@ import { ScrollTrigger } from 'gsap/all';
 import { useEffect } from 'react';
 
 import useCursorSignal from '@/components/Cursor/cursorSignal';
-import { hoverProxy } from '@/modules/DetailPage/Discover/Slider';
-import { useThemeSignal } from '@/stores/useThemeSignal';
 
 const useResetPage = (): void => {
-  const { resetTheme } = useThemeSignal();
   const { pathName } = useAppRouter();
   const { hide } = useCursorSignal();
   useSignalEffect(() => {
@@ -26,12 +23,9 @@ const useResetPage = (): void => {
 
   useEffect(() => {
     scrollRestorationManual();
-    hoverProxy.isHover = false;
     hide();
 
-    const timer = setTimeout(() => {
-      resetTheme();
-    }, 100);
+    const timer = setTimeout(() => {}, 100);
 
     return () => {
       clearTimeout(timer);

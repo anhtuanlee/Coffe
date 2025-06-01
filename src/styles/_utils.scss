@@ -34,7 +34,8 @@ html.lenis {
   max-width: unset !important;
   padding-left: rem(20px) !important;
   padding-right: rem(20px) !important;
-  --gap-x: #{rem(16px)} !important;
+  margin-inline: auto;
+  --gap-x: #{rem(20px)} !important;
 
   @include min-tablet {
     max-width: unset !important;
@@ -43,9 +44,8 @@ html.lenis {
     --gap-x: #{rem(20px)} !important;
   }
   @include pcSmall {
-    max-width: unset !important;
+    max-width: 178rem !important;
     padding-left: rem(40px) !important;
     padding-right: rem(40px) !important;
-    --gap-x: #{rem(40px)} !important;
   }
 }

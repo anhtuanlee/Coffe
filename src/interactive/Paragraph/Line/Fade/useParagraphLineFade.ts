@@ -30,7 +30,7 @@ export default function useParagraphLineFade({
   const pageHide = contextSafe(() => {
     refContent.current?.classList.add(s.lineFade);
     refText.current = new SplitType(refContent.current as HTMLElement, {
-      types: type || 'lines,words',
+      types: type || 'lines,words,chars',
     });
     gsap.killTweensOf(refText.current.words);
     gsap.set(refText.current.words, { y: '100%', opacity: 0, overwrite: 'auto' });
@@ -42,12 +42,14 @@ export default function useParagraphLineFade({
     const delay = getDelay({ refContentCurrent: refContent.current, delayEnter, delayTrigger });
     refText.current?.lines &&
       refText.current?.lines.forEach((lines, key) => {
-        gsap.to(lines.querySelectorAll('.word'), {
+        const char = lines.querySelectorAll('.word');
+        gsap.to(char, {
           y: '0%',
           opacity: 1,
+          stagger: 0.015,
           delay: (mDelayIn || delay) + key / 10,
           ease: 'power3.out',
-          duration: 1.6,
+          duration: 1,
           overwrite: 'auto',
         });
       });

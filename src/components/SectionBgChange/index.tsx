@@ -4,17 +4,17 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { PropsWithChildren, ReactElement, useRef } from 'react';
-
-import { useThemeSignal } from '@/stores/useThemeSignal';
-
+import { useTheme } from '@/store/ThemeProvider';
 import s from './styles.module.scss';
 
 export default function SectionBgChange({ children }: PropsWithChildren): ReactElement {
   const refContent = useRef<HTMLDivElement>(null);
-  const { setNavigateTheme, setCurrentTheme } = useThemeSignal();
+  const { setNavigateTheme, setCurrentTheme, currentTheme } = useTheme();
 
   useGSAP(
     () => {
+      gsap.registerPlugin(ScrollTrigger);
+
       const targetBgChange: HTMLElement[] = gsap.utils.toArray('.js-target-bgChange');
       const colorFromt: HTMLElement[] = gsap.utils.toArray('[data-theme]');
 
@@ -22,19 +22,18 @@ export default function SectionBgChange({ children }: PropsWithChildren): ReactE
 
       colorFromt.forEach((el) => {
         const dataTheme: string = el.getAttribute('data-theme') || 'dark';
-        const isLastSectionServices = dataTheme === 'bg-fo';
         //handle check last section in service to fix change background footer
 
         const animation = (): void => {
-          setCurrentTheme(dataTheme !== 'bg-dark' ? 'light' : 'dark');
-          setNavigateTheme(dataTheme === 'bg-dark' ? 'light' : 'dark');
-          currentBgChange.style.setProperty('--bg', `var(--${dataTheme})`);
+          setCurrentTheme(dataTheme !== 'dark' ? 'light' : 'dark');
+          setNavigateTheme(dataTheme === 'dark' ? 'light' : 'dark');
+          currentBgChange.style.setProperty('--bg', `var(--bg-${dataTheme})`);
         };
 
         ScrollTrigger.create({
           trigger: el,
           start: 'top center',
-          end: `bottom ${isLastSectionServices ? 100 : 50}%`,
+          end: `bottom 50%`,
           onToggle: (s) => {
             s.isActive && animation();
           },

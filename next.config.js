@@ -8,12 +8,20 @@ const needPrefix =
 /** @type {import("next").NextConfig} */
 
 const nextConfig = {
-  swcMinify: true,
   reactStrictMode: true,
   experimental: {
     scrollRestoration: true,
   },
-
+  images: {
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.cdninstagram.com',
+        port: '',
+      },
+    ],
+  },
   sassOptions: {
     additionalData: `
           @import "@Styles/_tool.scss";

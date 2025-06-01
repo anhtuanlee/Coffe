@@ -3,20 +3,23 @@
   display: block;
   position: relative;
   // padding: 1px 0;
-
+  line-height: 1;
+  span {
+    line-height: 1;
+  }
   &_el {
     &__clone {
       top: 0;
       left: 0;
       position: absolute;
 
-      p {
-        color: var(--black-grey);
+      span {
+        color: var(--txt-light-primary);
       }
     }
     &__imutable {
-      p {
-        color: var(--white);
+      span {
+        color: var(--txt-dark-primary);
       }
     }
   }

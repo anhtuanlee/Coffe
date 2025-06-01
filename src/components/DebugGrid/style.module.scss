@@ -18,11 +18,9 @@
     }
   }
 
-  :global {
-    .debug_col {
-      background: rgba(#ff6542, 0.15);
-      height: 100vh;
-    }
+  :global(.debug_col) {
+    background: rgba(#ff6542, 0.15);
+    height: 100vh;
   }
 }
 

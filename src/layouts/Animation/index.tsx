@@ -5,7 +5,6 @@ import { isPlayedState, isPlayState } from '@Layouts/Animation/animationSignal';
 import useLoadManageSignal from '@Layouts/Animation/loadManageSignal';
 import useLogicAnimate from '@Layouts/Animation/useLogicAnimate';
 import useResetPage from '@Layouts/Animation/useResetPage';
-import useHeaderSignal from '@Layouts/Header/useHeaderSignal';
 import PageEffect from '@Layouts/PageEffect';
 import { inCompleteState, urlState } from '@Layouts/PageEffect/pageEffectSignal';
 import PageLoader from '@Layouts/PageLoader';
@@ -18,16 +17,12 @@ import { useRouter } from 'next/navigation';
 import React, { PropsWithChildren, ReactElement, useEffect } from 'react';
 
 import useWindowResize, { useIsDesktop } from '@/hooks/useWindowResize';
+import Header from '../Header';
+import { useMutationObserver } from '@/hooks/useMutationObserver';
+import Footer from '../Footer';
 
 interface IProp extends PropsWithChildren {}
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-  scrollRestorationManual();
 
-  ScrollTrigger.config({
-    ignoreMobileResize: true,
-  });
-}
 export default function Animate({ children }: IProp): ReactElement {
   useLogicAnimate();
   useResetPage();
@@ -36,19 +31,15 @@ export default function Animate({ children }: IProp): ReactElement {
 
   const router = useRouter();
   const { isHome } = useAppRouter();
-  const { visibleHeader } = useHeaderSignal();
   const { scrollHeight } = useWindowResize();
   const { registerLoad, unRegisterLoad } = useLoadManageSignal();
-  const isDesktop = useIsDesktop();
   const mainRef = React.useRef<HTMLElement>(null);
 
-  useSignalEffectDeps(() => {
-    isFirstLoader.value = !isHome && !isPlayedState.value && !isPlayState.value;
-    visibleHeader(!isHome || !isDesktop);
-  }, [isHome, isDesktop]);
-
   useSignalEffect(() => {
-    scrollHeight.value && gRefresh();
+    scrollHeight.value &&
+      gsap.globalTimeline.getChildren().forEach((timeline) => {
+        timeline.scrollTrigger && timeline.scrollTrigger?.refresh();
+      });
   });
 
   useSignalEffect(() => {
@@ -57,6 +48,12 @@ export default function Animate({ children }: IProp): ReactElement {
   });
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    scrollRestorationManual();
+
+    ScrollTrigger.config({
+      ignoreMobileResize: true,
+    });
     registerLoad();
     const fontReady = setInterval(async () => {
       if (await document.fonts.ready) {
@@ -72,10 +69,14 @@ export default function Animate({ children }: IProp): ReactElement {
   });
 
   return (
-    <main ref={mainRef}>
-      {children}
-      <PageLoader />
-      <PageEffect />
-    </main>
+    <>
+      <Header />
+      <main ref={mainRef}>
+        {children}
+        <PageLoader />
+        <PageEffect />
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -1,16 +1,18 @@
-.imgParallax {
+.imageParallax {
   overflow: hidden;
-  position: relative;
+  height: 100%;
   width: 100%;
-
-  &_el {
-    object-fit: cover;
-  }
-
-  img,
-  video {
-    object-fit: cover;
-    width: 100%;
+  &_inner {
+    will-change: transform;
+    transform-origin: center;
     height: 100%;
+    width: 100%;
+    @include with-will-change;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }

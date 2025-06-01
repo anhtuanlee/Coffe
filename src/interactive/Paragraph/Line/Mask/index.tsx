@@ -45,4 +45,4 @@ const ParagraphLineMask = ({
 
   return React.cloneElement(children, { ...{ ref: refContent } });
 };
-export default React.memo(ParagraphLineMask);
+export default ParagraphLineMask;

@@ -30,6 +30,7 @@ export default function useBoxMaskLeft({
 
   const options = {
     xPercent: 0,
+    yPercent: 0,
     scale: 1,
     ease: ease || 'power3.out',
     duration: duration || 1.2,
@@ -37,8 +38,8 @@ export default function useBoxMaskLeft({
   };
 
   const initAnimation = contextSafe(() => {
-    gsap.set(refMaskWrapper.current, { xPercent: -100 });
-    gsap.set(refMaskElement.current, { xPercent: 100, scale: 1.2 });
+    gsap.set(refMaskWrapper.current, { xPercent: -100, yPercent: -100 });
+    gsap.set(refMaskElement.current, { xPercent: 100, yPercent: 100, scale: 1.2 });
   });
 
   const playAnimation = contextSafe(() => {

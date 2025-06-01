@@ -90,7 +90,7 @@ export default function BoxParallaxMouseMove({
   }
   return (
     <div className={s.moueMove} ref={refWrap}>
-      <div className={`${s.moueMove_mask} w-full h-full`} ref={refMask}>
+      <div className={`${s.moueMove_mask} h-full w-full`} ref={refMask}>
         {React.cloneElement(children, { ...{ ref: refContent } })}
       </div>
     </div>

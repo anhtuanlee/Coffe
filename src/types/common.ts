@@ -1,5 +1,3 @@
-import { GroupItem } from '@/modules/DetailPage/SectionData';
-
 export type IAnimationElement =
   | HTMLDivElement
   | HTMLElement
@@ -38,26 +36,7 @@ export type TImages = {
   alt: string;
   src: string;
 }[];
-export type TDataDetail = {
-  slug: string;
-  thumbnail: string;
-  groupData: GroupItem[];
-  detailsInfo: {
-    title: string;
-    cue: { title: string; desc: string | string[] }[];
-    text: string[];
-    tag?: [{ title: string }];
-    button: {
-      title: string;
-      src: string;
-    };
-  };
-  ending: {
-    type: 'video' | 'images';
-    src: string;
-  };
-  lastText?: string;
-};
+
 export type TSizeBtn = 'large' | 'medium' | 'min';
 
 export type ITypeEffect = 'page' | 'work' | 'page_work';

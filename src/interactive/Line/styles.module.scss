@@ -14,7 +14,6 @@
     transform-origin: left center;
   }
   &__left {
-    position: absolute;
     height: 100%;
     width: var(--size);
     border-left: var(--size) solid;
@@ -29,8 +28,14 @@
     transform-origin: top center;
   }
 
-  &__black-grey {
-    border-color: var(--black-grey);
+  &__dark-soft {
+    border-color: var(--bd-dark-soft);
+  }
+  &__dark-strong {
+    border-color: var(--bd-dark-strong);
+  }
+  &__dark-second {
+    border-color: var(--text-dark-second);
   }
   &__white {
     border-color: var(--white);

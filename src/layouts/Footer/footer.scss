@@ -1,0 +1,36 @@
+.footer-mask-image {
+  mask-image: url('/svgs/footer-mask.svg');
+  mask-size: 100% 100%;
+  cursor: pointer;
+
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-composite: intersect;
+  background-color: var(--bg-sf);
+
+  &-gradient {
+    --mouse-x: 0;
+    --mouse-y: 0;
+
+    transform: translate3d(
+      calc(var(--mouse-x, -100%) * 1px - 25rem),
+      calc(var(--mouse-y, -100%) * 1px - 40rem),
+      0
+    );
+    will-change: transform;
+    position: absolute;
+    filter: blur(10rem);
+    width: 50rem;
+    height: 50rem;
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: var(--color-base-0);
+    background: radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0)
+    );
+  }
+}

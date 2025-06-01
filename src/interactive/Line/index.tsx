@@ -12,21 +12,23 @@ import { IAnimationProps } from '@/types/animation';
 import s from './styles.module.scss';
 
 interface IProp extends IAnimationProps {
-  color?: 'white' | 'black-grey' | 'silver';
+  color?: 'white' | 'dark-soft' | 'dark-strong' | 'dark-second';
   size?: number;
   classNames?: string;
   direction?: 'bottom' | 'left' | 'right' | 'top';
   isStatic?: boolean;
+  isCenter?: boolean;
 }
 
 export default function Line({
-  color = 'white',
+  color = 'dark-soft',
   size = 1,
   delayTrigger,
   delayEnter,
   duration,
   classNames,
   direction = 'bottom',
+  isCenter = false,
   isStatic = false,
 }: IProp): React.ReactElement {
   const isHorizonal = direction === 'top' || direction === 'bottom';
@@ -35,9 +37,15 @@ export default function Line({
   const initAnimation = contextSafe((): void => {
     if (!isStatic) {
       if (isHorizonal) {
-        gsap.set(lineRef.current, { scaleX: 0 });
+        gsap.set(lineRef.current, {
+          scaleX: 0,
+          transformOrigin: isCenter ? 'center' : 'left',
+        });
       } else {
-        gsap.set(lineRef.current, { scaleY: 0 });
+        gsap.set(lineRef.current, {
+          scaleY: 0,
+          transformOrigin: isCenter ? 'center' : 'top',
+        });
       }
     }
   });

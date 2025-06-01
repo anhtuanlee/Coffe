@@ -1,23 +1,15 @@
-import localFont from 'next/font/local';
+import { Phudu, Be_Vietnam_Pro } from 'next/font/google';
 
-export const neuemontreal = localFont({
-  src: [
-    {
-      path: '../../public/fonts/PPNeueMontreal-Bold.woff2',
-      weight: '700',
-      style: 'normal',
-    },
-    {
-      path: '../../public/fonts/PPNeueMontreal-Medium.woff2',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: '../../public/fonts/PPNeueMontreal-Book.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-  ],
+export const phudu = Phudu({
+  subsets: ['latin', 'vietnamese'],
   display: 'swap',
-  variable: '--neue-montreal',
+  variable: '--font-title',
+  weight: ['300', '400', '500', '600', '700'],
+});
+
+export const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ['latin', 'vietnamese'],
+  display: 'swap',
+  variable: '--font-body',
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });

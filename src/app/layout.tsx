@@ -1,19 +1,18 @@
 import '../styles/app.scss';
 
 import MainLayout from '@Layouts/MainLayout';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata, Viewport } from 'next';
 import React from 'react';
 
 import { DOMAIN_URL } from '@/constants/common';
-import { neuemontreal } from '@/constants/font';
+import { beVietnamPro, phudu } from '@/constants/font';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(DOMAIN_URL || 'https://uncommonstudio.com.au'),
-  applicationName: 'Uncommon',
+  metadataBase: new URL(DOMAIN_URL),
+  applicationName: 'Viet Lasa',
   title: {
-    default: 'Uncommon',
-    template: '%s - Uncommon',
+    default: 'Home',
+    template: '%s - Viet Lasa',
   },
   description: 'We specialise in crafting digital experiences that elevate your business.',
   icons: {
@@ -24,42 +23,24 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Uncommon',
+    title: 'Viet Lasa',
   },
   formatDetection: {
     telephone: false,
   },
   openGraph: {
     type: 'website',
-    siteName: 'Uncommon',
-    emails: ['hola@uncommonstudio.com.au'],
-    url: DOMAIN_URL || 'https://uncommonstudio.com.au/',
+    siteName: 'Viet Lasa',
     title: {
-      default: 'Uncommon',
-      template: '%s - Uncommon',
+      default: 'Viet Lasa',
+      template: '%s - Viet Lasa',
     },
     images: [
       {
         url: '/images/thumbnail.jpg',
         width: 1200,
         height: 630,
-        alt: 'Uncommon',
-      },
-    ],
-    description: 'We specialise in crafting digital experiences that elevate your business.',
-  },
-  twitter: {
-    card: 'summary',
-    title: {
-      default: 'Uncommon',
-      template: '%s - Uncommon',
-    },
-    images: [
-      {
-        url: '/images/thumbnail.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Uncommon',
+        alt: 'Viet Lasa',
       },
     ],
     description: 'We specialise in crafting digital experiences that elevate your business.',
@@ -72,11 +53,10 @@ export default function RootLayout({
   children: React.ReactNode | React.ReactElement;
 }): React.ReactElement {
   return (
-    <html lang="en">
-      <body className={`${neuemontreal.variable}`}>
+    <html lang="vi">
+      <body className={`${beVietnamPro.variable} ${phudu.variable}`}>
         <MainLayout>{children}</MainLayout>
       </body>
-      <GoogleAnalytics gaId="G-FVEY1D1FMP" />
     </html>
   );
 }

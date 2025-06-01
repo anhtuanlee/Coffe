@@ -1,0 +1,35 @@
+.productList {
+  margin-inline: -2.5rem;
+  padding-inline: 2.5rem;
+  width: auto;
+
+  :global(.swiper) {
+    position: static;
+    overflow: visible;
+  }
+  :global(.swiper-pagination-progressbar) {
+    top: 0;
+    left: 0;
+    position: absolute;
+    // background-color: red;
+    height: max(1px, 0.1rem);
+    width: 100%;
+    margin-top: 1.25rem;
+    background-color: rgba(46, 42, 38, 0.2);
+  }
+  :global(.swiper-pagination-progressbar-fill) {
+    background-color: var(--text-light-primary);
+  }
+  :global(.swiper-button-prev) {
+    left: 0;
+    &::after {
+      content: '';
+    }
+  }
+  :global(.swiper-button-next) {
+    right: 0;
+    &::after {
+      content: '';
+    }
+  }
+}

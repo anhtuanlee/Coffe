@@ -10,6 +10,7 @@ interface ParagraphLineMaskProps extends PropsWithChildren {
   start?: string;
   horizontal?: boolean;
   onComplete?: () => void;
+  duration?: number;
 }
 
 type typeRef = HTMLDivElement | HTMLSpanElement | HTMLHeadingElement;
@@ -22,6 +23,7 @@ export default function HeadingChars({
   start,
   horizontal,
   onComplete,
+  duration,
 }: ParagraphLineMaskProps): ReactElement {
   const refContent = useRef<typeRef>(null);
 

@@ -1,7 +1,10 @@
 .lineFade {
   :global(.word) {
-    will-change: transform;
+    will-change: transform opacity;
     backface-visibility: hidden;
-    padding-bottom: 0.03em;
+    overflow: hidden;
+  }
+  :global(.line) {
+    line-height: initial;
   }
 }

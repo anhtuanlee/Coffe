@@ -13,7 +13,7 @@ interface IFade extends PropsWithChildren, IAnimationProps {
 }
 
 export default function Fade({
-  direction = 'none',
+  direction = 'bottom',
   delayTrigger,
   delayEnter,
   children,

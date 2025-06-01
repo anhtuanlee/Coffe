@@ -1,3 +1,5 @@
+'use client';
+
 import { DebugGrid } from '@Components/DebugGrid';
 import LenisScroller from '@Components/Lenis';
 import Animate from '@Layouts/Animation';
@@ -7,9 +9,7 @@ export default function MainLayout({ children }: PropsWithChildren): React.React
   return (
     <>
       <Animate>
-        <LenisScroller>
-          {children}
-        </LenisScroller>
+        <LenisScroller>{children}</LenisScroller>
       </Animate>
       <DebugGrid />
     </>

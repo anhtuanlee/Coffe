@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .pagi-custom {
+    @apply block h-[2px] w-[3.5rem] rounded-full bg-white/50;
+  }
+  .pagi-custom-active {
+    @apply block bg-[#fff];
+  }
+}
+
+.hover-line {
+  @apply relative z-[1] inline w-max cursor-pointer bg-left-bottom bg-no-repeat text-current;
+  background: linear-gradient(currentColor 0 0) calc(100% - var(--p, 0%)) 100% / var(--p, 0%) 1px
+    no-repeat;
+  transition:
+    0.4s,
+    background-position 0s;
+  z-index: 1;
+}
+
+.hover-line:hover {
+  --p: 100%;
+  @apply bg-[length:100%_1px];
+  transition:
+    0.4s,
+    background-position 0s;
+}
+.group:hover .hover-line {
+  --p: 100%;
+  @apply bg-[length:100%_1px];
+  transition:
+    0.4s,
+    background-position 0s;
+}
+.hover-line-active {
+  @apply relative inline w-max cursor-pointer text-current;
+  --text-color: currentColor;
+  background: linear-gradient(var(--text-color) 0 0) calc(100% - var(--p, 0%)) 100% / var(--p, 0%)
+    1px no-repeat;
+  transition:
+    0.3s 0.1s,
+    background-position 0s;
+}
+
+.hover-line-active::after {
+  @apply absolute inset-0 inline;
+  content: '';
+  color: var(--text-color);
+  line-height: 130%;
+  background: linear-gradient(var(--text-color) 0 0) calc(100% - var(--p-ac, 0%)) 100% /
+    var(--p-ac, 0%) 1px no-repeat;
+  transition:
+    0.3s,
+    background-position 0s;
+}
+
+.hover-line-active:hover {
+  --p: 100%;
+  @apply bg-[length:100%_1px];
+  transition:
+    0.3s 0.1s,
+    background-position 0s;
+}
+
+.hover-line-active:hover::after {
+  --p-ac: 0%;
+  @apply bg-[length:0%_1px];
+  transition:
+    0.3s,
+    background-position 0s;
+}
+.group:hover .hover-line-active {
+  --p: 100%;
+  @apply bg-[length:100%_1px];
+  transition:
+    0.3s 0.1s,
+    background-position 0s;
+}
+.group:hover.hover-line-active::after {
+  --p-ac: 100%;
+  @apply bg-[length:100%_1px];
+  transition:
+    0.3s,
+    background-position 0s;
+}

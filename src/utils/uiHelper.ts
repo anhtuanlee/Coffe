@@ -1,7 +1,8 @@
-import { ANIMATION_DELAY_ENTER } from '@Constants/animation';
+import { ANIMATION_DELAY_ENTER } from '@/constants/animation';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-
+import { ClassNameValue, twMerge } from 'tailwind-merge';
 import { IAnimationElement } from '@/types/common';
+import clsx from 'clsx';
 
 export const pageScrollTop = (): number => {
   return window.pageYOffset || document.documentElement.scrollTop || 0;
@@ -81,5 +82,61 @@ export const handleConvertSize = ({
   return {
     w: 2560,
     h: (2560 * height) / width,
+  };
+};
+
+export function cn(...inputs: ClassNameValue[]) {
+  return twMerge(clsx(inputs as []));
+}
+
+export const convertRemToPx = (px: number) => {
+  if (typeof window === 'undefined') {
+    return px * 16;
+  }
+  const rootFontSize = parseFloat(window.getComputedStyle(document.documentElement).fontSize);
+  return px * rootFontSize;
+};
+
+export const formatDateTime = (dateString: Date | string) => {
+  const dateTimeOptions: Intl.DateTimeFormatOptions = {
+    month: 'short', // abbreviated month name (e.g., 'Oct')
+    year: 'numeric', // abbreviated month name (e.g., 'Oct')
+    day: 'numeric', // numeric day of the month (e.g., '25')
+    hour: 'numeric', // numeric hour (e.g., '8')
+    minute: 'numeric', // numeric minute (e.g., '30')
+    hour12: true, // use 12-hour clock (true) or 24-hour clock (false)
+  };
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    month: 'short', // abbreviated month name (e.g., 'Oct')
+    year: 'numeric', // numeric year (e.g., '2023')
+    day: 'numeric', // numeric day of the month (e.g., '25')
+  };
+  const timeOptions: Intl.DateTimeFormatOptions = {
+    hour: 'numeric', // numeric hour (e.g., '8')
+    minute: 'numeric', // numeric minute (e.g., '30')
+    hour12: true, // use 12-hour clock (true) or 24-hour clock (false)
+  };
+  const formattedDateTime: string = new Date(dateString).toLocaleString('en-US', dateTimeOptions);
+  const formattedDate: string = new Date(dateString).toLocaleString('en-US', dateOptions);
+  const formattedTime: string = new Date(dateString).toLocaleString('en-US', timeOptions);
+  const formattedDayWithTime = new Date(dateString).toLocaleDateString('en-US', {
+    month: '2-digit',
+    day: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true,
+  });
+  const formattedDateNumber = new Date(dateString).toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+  return {
+    dateTime: formattedDateTime, //May 23, 2025 10:30 AM
+    dateOnly: formattedDate, //May 23, 2025
+    timeOnly: formattedTime, //10:30 AM
+    dataOnlyNumber: formattedDateNumber, //23/05/2025
+    daysTime: formattedDayWithTime, //May 23, 2025 10:30 AM
   };
 };

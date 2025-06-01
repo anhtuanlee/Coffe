@@ -14,11 +14,11 @@ interface IUseFade extends IAnimationHook {
 
 export default function useFade({
   refContent,
-  direction = 'none',
+  direction = 'bottom',
   delayTrigger,
   delayEnter,
   duration = 0.8,
-  from = '100%',
+  from = '2.4rem',
 }: IUseFade): IValueHookAnimation {
   const { contextSafe } = useGSAP();
 

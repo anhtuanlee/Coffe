@@ -3,7 +3,6 @@ import cn from 'classnames/bind';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import s from './style.module.scss';
-
 const cx = cn.bind(s);
 
 export const DebugGrid = (): JSX.Element => {
@@ -34,23 +33,23 @@ export const DebugGrid = (): JSX.Element => {
   return (
     <div className={cx('grid-debug', `${isGird ? '' : 'hidden'}`)}>
       <div className="container">
-        <div className="grid lg:grid-cols-12 xs:grid-cols-6 sm:grid-cols-8 ">
+        <div className="grid xs:grid-cols-6 sm:grid-cols-8 lg:grid-cols-12">
           <div className="debug_col col-span-1"></div>
           <div className="debug_col col-span-1"></div>
           <div className="debug_col col-span-1"></div>
           <div className="debug_col col-span-1"></div>
           <div className="debug_col col-span-1"></div>
           <div className="debug_col col-span-1"></div>
-          <div className="debug_col xs:hidden sm:block col-span-1"></div>
-          <div className="debug_col xs:hidden sm:block col-span-1"></div>
-          <div className="debug_col xs:hidden sm:block col-span-1"></div>
-          <div className="debug_col xs:hidden sm:block col-span-1"></div>
-          <div className="debug_col xs:hidden sm:block col-span-1"></div>
-          <div className="debug_col xs:hidden sm:block col-span-1"></div>
-          <div className="debug_col xs:hidden sm:block col-span-1"></div>
-          <div className="debug_col xs:hidden sm:block col-span-1"></div>
-          <div className="debug_col xs:hidden sm:block col-span-1"></div>
-          <div className="debug_col xs:hidden sm:block col-span-1"></div>
+          <div className="debug_col col-span-1 xs:hidden sm:block"></div>
+          <div className="debug_col col-span-1 xs:hidden sm:block"></div>
+          <div className="debug_col col-span-1 xs:hidden sm:block"></div>
+          <div className="debug_col col-span-1 xs:hidden sm:block"></div>
+          <div className="debug_col col-span-1 xs:hidden sm:block"></div>
+          <div className="debug_col col-span-1 xs:hidden sm:block"></div>
+          <div className="debug_col col-span-1 xs:hidden sm:block"></div>
+          <div className="debug_col col-span-1 xs:hidden sm:block"></div>
+          <div className="debug_col col-span-1 xs:hidden sm:block"></div>
+          <div className="debug_col col-span-1 xs:hidden sm:block"></div>
         </div>
       </div>
     </div>

@@ -41,7 +41,6 @@ export default function useParagraphLineMask({
       word.appendChild(span);
       wordCloneds.current.push(span);
     });
-
     gsap.set(wordCloneds.current, { yPercent: 108, overwrite: 'auto' });
   });
 
