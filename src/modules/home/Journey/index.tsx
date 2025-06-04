@@ -7,14 +7,10 @@ import JourneyItem from './JourneyItem';
 import ParagraphLineFade from '@/interactive/Paragraph/Line/Fade';
 import { delay_trigger } from '@/constants/delay';
 import Fade from '@/interactive/Fade';
-import useColorChange from '@/components/SectionBgChange/useColorChange';
 
 export default function Journey() {
-  const journeyRef = useRef<HTMLDivElement>(null);
-  useColorChange(journeyRef);
-
   return (
-    <div className="w-full" data-theme="light" ref={journeyRef}>
+    <div className="w-full">
       <div className="container grid grid-cols-12 pb-20 pt-[22.5rem]">
         <HeadingContent
           title="the Journal"
@@ -71,12 +67,12 @@ const DATA_JOURNEY = [
     link: '/',
     image: '/images/journey_3.jpg',
   },
-  {
-    id: 4,
-    title: 'Introducing: matcha.',
-    decs: 'At Viet Lasa, every ingredient we serve is carefully chosen, not just for what it is, but for how it performs in the cup. Matcha is no exception. We’re introducing matcha at Viet Lasa, treated with the same care and precision as our coffee.',
-    createAt: '2025-05-30',
-    link: '/',
-    image: '/images/journey_3.jpg',
-  },
+  // {
+  //   id: 4,
+  //   title: 'Introducing: matcha.',
+  //   decs: 'At Viet Lasa, every ingredient we serve is carefully chosen, not just for what it is, but for how it performs in the cup. Matcha is no exception. We’re introducing matcha at Viet Lasa, treated with the same care and precision as our coffee.',
+  //   createAt: '2025-05-30',
+  //   link: '/',
+  //   image: '/images/journey_3.jpg',
+  // },
 ];

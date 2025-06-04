@@ -22,7 +22,7 @@ export default function HeadingContent({
       {label && (
         <HeadingChars delayTrigger={delay_trigger._05} duration={0.8}>
           <div
-            className={`font-title text-16 font-light uppercase ${
+            className={`font-body text-16 font-light uppercase ${
               isLight ? 'text-txt-dark-secondary' : 'text-txt-light-secondary'
             }`}
           >
@@ -33,7 +33,7 @@ export default function HeadingContent({
       {title && (
         <HeadingChars delayEnter={delay_trigger._1} delayTrigger={delay_trigger._15}>
           <div
-            className={`text-56 font-medium uppercase ${
+            className={`font-title text-56 font-medium uppercase ${
               isLight ? 'text-txt-dark-primary' : 'text-txt-light-primary'
             }`}
           >

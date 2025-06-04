@@ -1,8 +1,10 @@
 'use client';
 
+import BoxCircle from '@/components/BoxCircle';
 import ImagePlaceholder from '@/components/ImagePlaceHolder';
 import useColorChange from '@/components/SectionBgChange/useColorChange';
 import { delay_trigger } from '@/constants/delay';
+import BoxMaskLeft from '@/interactive/BoxMask/Left';
 import Fade from '@/interactive/Fade';
 import HeadingChars from '@/interactive/Heading/Chars';
 import ImageParallax from '@/interactive/ImageParallax';
@@ -12,25 +14,31 @@ import ParagraphLineMask from '@/interactive/Paragraph/Line/Mask';
 import { useRef } from 'react';
 
 export default function Taste() {
-  const tasteRef = useRef<HTMLDivElement>(null);
-  useColorChange(tasteRef);
   return (
-    <div
-      className="relative flex flex-col"
-      data-theme="dark"
-      ref={tasteRef}
-      data-position-end="top top"
-      data-position-start="bottom center"
-    >
-      <div className="aspect-[1728/745] w-full">
-        <ImageParallax>
+    <div className="relative flex flex-col">
+      <div className="relative aspect-[1728/745] w-full">
+        <div className="absolute left-1/2 top-16 z-20 flex -translate-x-1/2 flex-col items-center">
+          <HeadingChars delayTrigger={delay_trigger._05}>
+            <h2 className="font-title text-90 font-normal uppercase text-[#F7F4F0]">viet lasa</h2>
+          </HeadingChars>
+          <ParagraphLineFade delayTrigger={delay_trigger._1}>
+            <div className="text-20 font-light tracking-[5%] text-[#F7F4F0]">
+              Vietnamese Food & Drinks{' '}
+            </div>
+          </ParagraphLineFade>
+        </div>
+        <BoxMaskLeft delayEnter={delay_trigger._15}>
           <div>
-            <ImagePlaceholder src="/images/taste.jpg" width={1728} height={745} alt="taste" />
+            <ImageParallax>
+              <div>
+                <ImagePlaceholder src="/images/taste.jpg" width={1728} height={745} alt="taste" />
+              </div>
+            </ImageParallax>
           </div>
-        </ImageParallax>
+        </BoxMaskLeft>
       </div>
-      <div className="container absolute bottom-0 z-10 translate-y-1/2">
-        <div className="grid w-full grid-cols-12 rounded-12 bg-bg-dark">
+      <div className="container absolute bottom-0 left-1/2 z-10 -translate-x-1/2 translate-y-1/2">
+        <div className="grid w-full grid-cols-12 rounded-12 bg-bg-dark transition-all duration-500">
           <div className="col-start-1 col-end-6 flex flex-col py-16 pl-16">
             <HeadingChars delayTrigger={delay_trigger._05}>
               <h2 className="mb-10 font-title text-64 font-normal text-txt-dark-primary">
@@ -59,19 +67,38 @@ export default function Taste() {
             </div>
           </div>
           <div className="col-start-8 -col-end-2 self-center justify-self-end">
-            <div className="flex flex-row gap-4">
+            <div className="flex flex-row">
               <Fade delayTrigger={delay_trigger._25} direction="none">
-                <div className="flex aspect-square w-60 items-center justify-center rounded-full border border-solid border-txt-dark-secondary bg-bg-dark">
-                  <div className="text-center font-title text-32 font-normal uppercase text-txt-light-white">
-                    Menu
-                  </div>
+                <div>
+                  <BoxCircle
+                    className="aspect-square w-60"
+                    lerpIn={0.05}
+                    lerpOut={0.1}
+                    scale={1.2}
+                    colorCircle="bg-bg-dark transition-all duration-500"
+                  >
+                    <div className="flex h-full w-full items-center justify-center">
+                      <div className="text-center font-title text-32 font-normal uppercase text-txt-light-white">
+                        Menu
+                      </div>
+                    </div>
+                  </BoxCircle>
                 </div>
               </Fade>
               <Fade delayTrigger={delay_trigger._3} direction="none">
-                <div className="-mx-8 flex aspect-square w-60 items-center justify-center rounded-full border border-solid border-txt-dark-secondary bg-bg-dark">
-                  <div className="text-center font-title text-32 font-normal uppercase text-txt-light-white">
-                    order online
-                  </div>
+                <div className="-translate-x-8">
+                  <BoxCircle
+                    lerpOut={0.05}
+                    scale={1.2}
+                    className="aspect-square w-60"
+                    colorCircle="bg-bg-dark"
+                  >
+                    <div className="flex h-full w-full items-center justify-center rounded-full">
+                      <div className="text-center font-title text-32 font-normal uppercase text-txt-light-white">
+                        order online
+                      </div>
+                    </div>
+                  </BoxCircle>
                 </div>
               </Fade>
             </div>

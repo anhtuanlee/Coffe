@@ -1,3 +1,5 @@
+import BoxCircle from '@/components/BoxCircle';
+import Insta from '@/components/Icons/insta';
 import ImagePlaceholder from '@/components/ImagePlaceHolder';
 import ImagePreload from '@/components/ImagePreload';
 import { delay_trigger } from '@/constants/delay';
@@ -8,10 +10,6 @@ import React from 'react';
 
 export default function Instagram() {
   const IMAGE_INSTA = [
-    {
-      id: 6,
-      image: '/images/insta_3.jpg',
-    },
     {
       id: 1,
       image: '/images/insta_1.jpg',
@@ -30,7 +28,7 @@ export default function Instagram() {
     },
     {
       id: 5,
-      image: '/images/insta_3.jpg',
+      image: '/images/insta_5.jpg',
     },
   ];
   return (
@@ -43,7 +41,7 @@ export default function Instagram() {
             </div>
           </ParagraphLineMask>
           <HeadingChars delayTrigger={delay_trigger._1}>
-            <h2 className="uppercas font-title text-56 font-medium text-txt-light-primary">
+            <h2 className="uppercas hover-line size-line-3 font-title text-56 font-medium !text-txt-light-primary">
               @vietlasa
             </h2>
           </HeadingChars>
@@ -53,7 +51,7 @@ export default function Instagram() {
             {IMAGE_INSTA.map((item, index) => (
               <div
                 key={item.id}
-                className="group relative flex h-[30rem] flex-shrink-0 basis-[20rem] cursor-pointer select-none items-center justify-center overflow-hidden transition-all duration-500 hover:basis-[30rem]"
+                className="group relative flex h-[30rem] w-[calc(100vw_/_5)] cursor-pointer select-none items-center justify-center overflow-hidden transition-all duration-500 hover:w-[30rem] hover:flex-shrink-0"
               >
                 <Fade delayTrigger={index / 10} direction="none">
                   <div className="aspect-square h-full">
@@ -64,7 +62,19 @@ export default function Instagram() {
                       alt={`insta-${item.id}`}
                     />
                     <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-all duration-300 group-hover:opacity-100">
-                      <ImagePreload width={50} height={50} src={'/svgs/insta.svg'} alt={'insta'} />
+                      <BoxCircle
+                        className="aspect-square w-12"
+                        lerpIn={0.05}
+                        lerpOut={0.1}
+                        colorCircle="bg-transparent border-light-primary"
+                        scale={0.3}
+                      >
+                        <div className="flex items-center justify-center rounded-full p-3">
+                          <div data-child-inner className="h-6 w-6">
+                            <Insta />
+                          </div>
+                        </div>
+                      </BoxCircle>
                     </div>
                   </div>
                 </Fade>

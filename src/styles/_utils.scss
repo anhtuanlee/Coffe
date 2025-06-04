@@ -44,7 +44,8 @@ html.lenis {
     --gap-x: #{rem(20px)} !important;
   }
   @include pcSmall {
-    max-width: 178rem !important;
+    margin-inline: auto;
+    max-width: 1728px !important;
     padding-left: rem(40px) !important;
     padding-right: rem(40px) !important;
   }

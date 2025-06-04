@@ -4,17 +4,23 @@
 
 @layer utilities {
   .pagi-custom {
-    @apply block h-[2px] w-[3.5rem] rounded-full bg-white/50;
+    @apply relative block h-[2px] w-[3.5rem] cursor-pointer rounded-full bg-white/50 transition-all duration-300 after:absolute after:-inset-y-4 after:inset-x-0;
   }
   .pagi-custom-active {
     @apply block bg-[#fff];
+  }
+  .size-line-2 {
+    --size-line: max(2px, 0.125rem);
+  }
+  .size-line-3 {
+    --size-line: max(3px, 0.1875rem);
   }
 }
 
 .hover-line {
   @apply relative z-[1] inline w-max cursor-pointer bg-left-bottom bg-no-repeat text-current;
-  background: linear-gradient(currentColor 0 0) calc(100% - var(--p, 0%)) 100% / var(--p, 0%) 1px
-    no-repeat;
+  background: linear-gradient(currentColor 0 0) calc(100% - var(--p, 0%)) 100% / var(--p, 0%)
+    var(--size-line) no-repeat;
   transition:
     0.4s,
     background-position 0s;
@@ -23,14 +29,14 @@
 
 .hover-line:hover {
   --p: 100%;
-  @apply bg-[length:100%_1px];
+  @apply bg-[length:100%_var(--size-line)];
   transition:
     0.4s,
     background-position 0s;
 }
 .group:hover .hover-line {
   --p: 100%;
-  @apply bg-[length:100%_1px];
+  @apply bg-[length:100%_var(--size-line)];
   transition:
     0.4s,
     background-position 0s;
@@ -39,7 +45,7 @@
   @apply relative inline w-max cursor-pointer text-current;
   --text-color: currentColor;
   background: linear-gradient(var(--text-color) 0 0) calc(100% - var(--p, 0%)) 100% / var(--p, 0%)
-    1px no-repeat;
+    var(--size-line) no-repeat;
   transition:
     0.3s 0.1s,
     background-position 0s;
@@ -51,7 +57,7 @@
   color: var(--text-color);
   line-height: 130%;
   background: linear-gradient(var(--text-color) 0 0) calc(100% - var(--p-ac, 0%)) 100% /
-    var(--p-ac, 0%) 1px no-repeat;
+    var(--p-ac, 0%) var(--size-line) no-repeat;
   transition:
     0.3s,
     background-position 0s;
@@ -59,7 +65,7 @@
 
 .hover-line-active:hover {
   --p: 100%;
-  @apply bg-[length:100%_1px];
+  @apply bg-[length:100%_var(--size-line)];
   transition:
     0.3s 0.1s,
     background-position 0s;
@@ -67,21 +73,21 @@
 
 .hover-line-active:hover::after {
   --p-ac: 0%;
-  @apply bg-[length:0%_1px];
+  @apply bg-[length:0%_var(--size-line)];
   transition:
     0.3s,
     background-position 0s;
 }
 .group:hover .hover-line-active {
   --p: 100%;
-  @apply bg-[length:100%_1px];
+  @apply bg-[length:100%_var(--size-line)];
   transition:
     0.3s 0.1s,
     background-position 0s;
 }
 .group:hover.hover-line-active::after {
   --p-ac: 100%;
-  @apply bg-[length:100%_1px];
+  @apply bg-[length:100%_var(--size-line)];
   transition:
     0.3s,
     background-position 0s;

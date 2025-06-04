@@ -13,15 +13,15 @@
     --mouse-y: 0;
 
     transform: translate3d(
-      calc(var(--mouse-x, -100%) * 1px - 25rem),
-      calc(var(--mouse-y, -100%) * 1px - 40rem),
+      calc(var(--mouse-x, -100%) * 1px - 35rem),
+      calc(var(--mouse-y, -100%) * 1px - 60rem),
       0
     );
     will-change: transform;
     position: absolute;
     filter: blur(10rem);
-    width: 50rem;
-    height: 50rem;
+    width: 80rem;
+    height: 80rem;
     aspect-ratio: 1 / 1;
     border-radius: 100%;
     transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1);

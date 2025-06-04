@@ -48,7 +48,7 @@ export default function useHeadingChars({
       gsap.to(refText.current.chars, {
         stagger: 0.015,
         y: '0%',
-        duration: duration || 1.2,
+        duration: duration || 1.6,
         ease: 'expo',
         delay: offset ? -offset : delay,
         overwrite: 'auto',
@@ -56,7 +56,7 @@ export default function useHeadingChars({
       });
   });
 
-  const _playAnimationOut = contextSafe(() => {});
+  const _playAnimationOut = contextSafe(() => { });
 
   useAnimation({
     trigger: refContent,

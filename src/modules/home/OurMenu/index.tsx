@@ -160,7 +160,7 @@ export default function OurMenu() {
   const outMenuRef = useRef<HTMLDivElement>(null);
   useColorChange(outMenuRef);
   return (
-    <div className="py-[6.75rem]" data-theme="light" ref={outMenuRef}>
+    <div className="py-[6.75rem]" data-theme="light" ref={outMenuRef} data-theme-end="bottom 10%">
       <div className="container">
         <div className="grid grid-cols-12">
           <HeadingContent

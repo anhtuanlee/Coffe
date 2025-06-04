@@ -28,21 +28,24 @@ export default function JourneyItem(props: TJourneyItem) {
     const height = !isOdd ? 1000 : 500;
     return (
       <div className={`${colSpan} relative h-[31.8125rem] overflow-hidden rounded-12`}>
-        <BoxMaskLeft
-          delayTrigger={delay_trigger._25}
-          delayEnter={delay_trigger._25}
-          className="h-full w-full"
-        >
-          <div className="h-full w-full">
-            <ImageParallax
-              scale={1.3}
-              speed={isOdd ? 1.3 : -1.3}
-              className="absolute h-full w-full"
+        <Fade delayTrigger={delay_trigger._2} delayEnter={delay_trigger._2}>
+          <div className="size-full">
+            <BoxMaskLeft
+              delayEnter={delay_trigger._25}
+              className="size-full overflow-hidden rounded-12"
             >
-              <Image src={image} width={width} height={height} alt={title} />
-            </ImageParallax>
+              <div className="size-full">
+                <ImageParallax
+                  scale={1.3}
+                  speed={isOdd ? 1.3 : -1.3}
+                  className="absolute h-full w-full"
+                >
+                  <Image src={image} width={width} height={height} alt={title} />
+                </ImageParallax>
+              </div>
+            </BoxMaskLeft>
           </div>
-        </BoxMaskLeft>
+        </Fade>
       </div>
     );
   };

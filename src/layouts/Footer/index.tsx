@@ -21,6 +21,8 @@ import ButtonTop from './ButtonTop';
 import useMouse from '@/hooks/useMouse';
 import { useSignalEffect } from '@preact/signals-react';
 import { useIsInViewport } from '@/hooks/useIsInViewport';
+import BoxSnap from '@/interactive/BoxSnap/Bottom';
+import BoxCircle from '@/components/BoxCircle';
 
 export default function Footer() {
   const refFuns = useRef<IHover>();
@@ -80,9 +82,19 @@ export default function Footer() {
                 {LINK_SOCIAL.map((item, index) => {
                   return (
                     <Link href={item.href} key={index}>
-                      <div className="flex items-center justify-center rounded-full border border-solid border-bd-dark-soft p-3">
-                        <div className="h-6 w-6">{item.icon()}</div>
-                      </div>
+                      <BoxCircle
+                        className="aspect-square w-12"
+                        lerpIn={0.05}
+                        lerpOut={0.1}
+                        colorCircle="bg-transparent border-bd-dark-soft"
+                        scale={0.3}
+                      >
+                        <div className="flex items-center justify-center rounded-full p-3">
+                          <div data-child-inner className="h-6 w-6">
+                            {item.icon()}
+                          </div>
+                        </div>
+                      </BoxCircle>
                     </Link>
                   );
                 })}
@@ -108,7 +120,9 @@ export default function Footer() {
         <div className="py-12 pr-10">
           <div className="flex h-full max-w-full flex-col items-end justify-between">
             <Fade delayTrigger={delay_trigger._2}>
-              <ButtonTop />
+              <div className="w-max">
+                <ButtonTop />
+              </div>
             </Fade>
             <Fade delayTrigger={delay_trigger._25}>
               <div>

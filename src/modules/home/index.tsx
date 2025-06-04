@@ -15,9 +15,9 @@ const HomeModule = () => {
         <SectionBgChange>
           <Story />
           <OurMenu />
-          <Taste />
-          <Journey />
         </SectionBgChange>
+        <Taste />
+        <Journey />
         <Instagram />
       </ProviderTheme>
     </div>

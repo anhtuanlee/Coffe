@@ -94,10 +94,13 @@ ul {
 
 html {
   box-sizing: border-box;
-  font-size: 16px !important;
+  // font-size: 16px !important;
 
   @include pcSmall {
     font-size: vw(16px) !important;
+  }
+  @media screen and (min-width: 1728px) {
+    font-size: 16px !important;
   }
 }
 
@@ -127,14 +130,6 @@ img {
 img:is([loading='lazy']) {
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-body {
-  line-height: 110%;
-  font-weight: normal;
-  font-size: rem(16px);
-  color: var(--dark);
-  // overflow: hidden;
 }
 
 body::-webkit-scrollbar {

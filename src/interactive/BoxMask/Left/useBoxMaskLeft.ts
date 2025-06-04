@@ -29,17 +29,15 @@ export default function useBoxMaskLeft({
   };
 
   const options = {
-    xPercent: 0,
-    yPercent: 0,
-    scale: 1,
+    scaleX: 1,
+    scaleY: 1,
     ease: ease || 'power3.out',
     duration: duration || 1.2,
     onComplete,
   };
 
   const initAnimation = contextSafe(() => {
-    gsap.set(refMaskWrapper.current, { xPercent: -100, yPercent: -100 });
-    gsap.set(refMaskElement.current, { xPercent: 100, yPercent: 100, scale: 1.2 });
+    gsap.set(refMaskElement.current, { scaleX: 1.2, scaleY: 1.2 });
   });
 
   const playAnimation = contextSafe(() => {
@@ -48,7 +46,7 @@ export default function useBoxMaskLeft({
       delayTrigger,
       delayEnter,
     });
-    gsap.to([refMaskWrapper.current, refMaskElement.current], {
+    gsap.to([refMaskElement.current], {
       delay,
       ...options,
     });

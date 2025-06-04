@@ -1,4 +1,5 @@
 .boxMaskBottomWrapper {
+  overflow: hidden;
   will-change: transform;
   &:not(.isComplete) {
     overflow: hidden;

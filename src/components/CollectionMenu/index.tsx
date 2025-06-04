@@ -75,7 +75,7 @@ export default function CollectionMenu(props: TCollectionMenu) {
                 <div
                   key={index}
                   onClick={() => setCurrentType(item)}
-                  className={`cursor-pointer py-2.5 text-18 font-light uppercase hover:text-txt-light-primary ${
+                  className={`cursor-pointer py-2.5 text-18 font-medium uppercase transition-all duration-300 hover:text-txt-light-primary ${
                     currentType === item ? 'text-txt-light-primary' : 'text-txt-light-primary/50'
                   }`}
                 >
@@ -109,7 +109,7 @@ const ProductList = (props: { product: TProduct[]; type: string }) => {
         ref={ref}
         modules={[Navigation, Pagination]}
         spaceBetween={convertRemToPx(1.25)}
-        slidesPerView={3}
+        slidesPerView={4}
         navigation
         watchSlidesProgress
         watchOverflow={true}
@@ -166,6 +166,25 @@ const ProductList = (props: { product: TProduct[]; type: string }) => {
             </Fade>
           </SwiperSlide>
         ))}
+        <SwiperSlide
+          key={`empty-${product.length}-${type}`}
+          className="flex aspect-[377/430] h-full !items-center !justify-center"
+        >
+          <Fade delayTrigger={(product.length - 1) * 0.1} delayEnter={delay_trigger._05}>
+            <div className="h-full opacity-0">
+              <div className="flex size-full h-full w-full items-center justify-center px-14">
+                <HeadingChars
+                  delayTrigger={(product.length - 1) * 0.1}
+                  delayEnter={delay_trigger._05}
+                >
+                  <h3 className="text-center font-title text-40 font-normal uppercase text-txt-light-primary">
+                    You’ll find more drinks on the menu
+                  </h3>
+                </HeadingChars>
+              </div>
+            </div>
+          </Fade>
+        </SwiperSlide>
       </Swiper>
     </div>
   );

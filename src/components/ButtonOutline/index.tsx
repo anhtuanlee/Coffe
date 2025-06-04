@@ -51,7 +51,6 @@ const ButtonOutline = forwardRef<TButtonOutlineRef, TButtonOutline>((props, ref)
         );
       }}
       onMouseLeave={() => {
-        gsap.killTweensOf(bgRef.current);
         reFuns.current?.onLeave();
         gsap.fromTo(
           bgRef.current,
