@@ -28,7 +28,7 @@ const ButtonPrimary = forwardRef<TButtonOutlineRef, TButtonOutline>((props, ref)
     <button
       ref={btnRef}
       className={cn(
-        'button-primary relative flex items-center justify-center overflow-hidden rounded-full bg-bg-dark p-5 !text-16 font-thin uppercase leading-none text-txt-light-white',
+        'button-primary relative flex items-center justify-center overflow-hidden rounded-full bg-bg-dark p-5 !text-16 uppercase leading-none text-txt-light-white',
         className
       )}
       onMouseEnter={() => {

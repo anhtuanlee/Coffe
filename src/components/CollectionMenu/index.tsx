@@ -61,7 +61,9 @@ export default function CollectionMenu(props: TCollectionMenu) {
             )}
             {description && (
               <ParagraphLineFade delayTrigger={delay_trigger._05}>
-                <div className="text-16 text-txt-light-secondary">{description}</div>
+                <div className="max-w-[32.75rem] text-16 text-txt-light-secondary">
+                  {description}
+                </div>
               </ParagraphLineFade>
             )}
           </div>

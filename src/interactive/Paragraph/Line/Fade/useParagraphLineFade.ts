@@ -30,7 +30,7 @@ export default function useParagraphLineFade({
   const pageHide = contextSafe(() => {
     refContent.current?.classList.add(s.lineFade);
     refText.current = new SplitType(refContent.current as HTMLElement, {
-      types: type || 'lines,words,chars',
+      types: type || 'lines,words',
     });
     gsap.killTweensOf(refText.current.words);
     gsap.set(refText.current.words, { y: '100%', opacity: 0, overwrite: 'auto' });
