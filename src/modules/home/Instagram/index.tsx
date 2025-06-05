@@ -36,9 +36,7 @@ export default function Instagram() {
       <div className="flex flex-col gap-16">
         <div className="flex flex-col items-center gap-3">
           <ParagraphLineMask delayTrigger={delay_trigger._05}>
-            <div className="text-20 font-light uppercase text-txt-light-primary">
-              Follow Our Journey
-            </div>
+            <div className="text-20 uppercase text-txt-light-primary">Follow Our Journey</div>
           </ParagraphLineMask>
           <HeadingChars delayTrigger={delay_trigger._1}>
             <h2 className="uppercas hover-line size-line-3 font-title text-56 font-medium !text-txt-light-primary">
@@ -51,7 +49,7 @@ export default function Instagram() {
             {IMAGE_INSTA.map((item, index) => (
               <div
                 key={item.id}
-                className="group relative flex h-[30rem] w-[calc(100vw_/_5)] cursor-pointer select-none items-center justify-center overflow-hidden transition-all duration-500 hover:w-[30rem] hover:flex-shrink-0"
+                className="group relative flex aspect-square h-[28vw] w-[calc(100vw_/_5)] cursor-pointer select-none items-center justify-center overflow-hidden transition-all duration-500 hover:w-[28vw] hover:flex-shrink-0"
               >
                 <Fade delayTrigger={index / 10} direction="none">
                   <div className="aspect-square h-full">

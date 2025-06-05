@@ -34,7 +34,7 @@ export default function Story(): React.ReactElement {
                   <div>
                     <ImageParallax>
                       <ImagePlaceholder
-                        src="/images/story_1.jpg"
+                        src="/images/about_1.jpg"
                         alt="story"
                         width={1000}
                         height={1600}
@@ -56,7 +56,7 @@ export default function Story(): React.ReactElement {
                     <div>
                       <ImageParallax speed={-1}>
                         <ImagePlaceholder
-                          src="/images/story_2.jpg"
+                          src="/images/about_2.jpg"
                           alt="story"
                           width={1000}
                           height={1600}
@@ -68,7 +68,7 @@ export default function Story(): React.ReactElement {
               </Fade>
 
               <ParagraphLineFade>
-                <div className="text-16 font-light text-txt-dark-secondary">
+                <div className="text-16 text-txt-dark-secondary">
                   Viet Lasa is a new Vietnamese cafe in Makati that has a warm, nature-inspired vibe
                   with unique wall art and wood tones. It’s also a great spot for studying and
                   working!
@@ -86,7 +86,7 @@ export default function Story(): React.ReactElement {
             <Line duration={1.2} direction="left" color="dark-strong" />
             <div className="flex flex-col">
               <ParagraphLineFade>
-                <div className="mb-8 text-16 font-light text-txt-dark-secondary">
+                <div className="mb-8 text-16 text-txt-dark-secondary">
                   Story of how Vietlasa was founded, the inspiration behind bringing Vietnamese
                   coffee culture to Makati, and the passion for authentic flavors and traditions.
                   Vietlasa has it all—crispy Bánh Mì, flavorful Sticky Rice, and bold Vietnamese
@@ -109,7 +109,7 @@ export default function Story(): React.ReactElement {
                     <div>
                       <ImageParallax speed={1.2}>
                         <ImagePlaceholder
-                          src="/images/story_3.jpg"
+                          src="/images/about_3.jpg"
                           alt="story"
                           width={700}
                           height={880}

@@ -31,12 +31,9 @@ export default function useBoxSnap({
   horizontal,
   scale,
 }: IUseBoxSnap): void {
-
   const { contextSafe } = useGSAP();
 
-  const initAnimation = contextSafe(() => {
-
-  });
+  const initAnimation = contextSafe(() => {});
 
   const playAnimation = contextSafe(() => {
     const delay = getDelay({
@@ -45,8 +42,6 @@ export default function useBoxSnap({
       delayEnter,
     });
   });
-
-
 
   useAnimation({
     trigger: refTrigger,

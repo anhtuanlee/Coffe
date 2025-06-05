@@ -46,10 +46,10 @@ export default function useParagraphLineFade({
         gsap.to(char, {
           y: '0%',
           opacity: 1,
-          stagger: 0.015,
-          delay: (mDelayIn || delay) + key / 10,
+          stagger: 0.025,
+          delay: (mDelayIn || delay) + key / 8,
           ease: 'power3.out',
-          duration: 1,
+          duration: 1.2,
           overwrite: 'auto',
         });
       });

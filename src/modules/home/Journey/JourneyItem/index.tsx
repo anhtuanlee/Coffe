@@ -64,12 +64,12 @@ export default function JourneyItem(props: TJourneyItem) {
               <div className="font-title text-24 font-normal text-txt-light-primary">{title}</div>
             </HeadingChars>
             <ParagraphLineFade delayTrigger={delay_trigger._15}>
-              <div className="text-16 font-light text-txt-light-secondary">{decs}</div>
+              <div className="text-16 text-txt-light-secondary">{decs}</div>
             </ParagraphLineFade>
           </div>
           <div className={`${flexBottom} flex`}>
             <ParagraphLineMask delayTrigger={delay_trigger._2}>
-              <div className="text-16 font-light text-txt-light-primary">
+              <div className="text-16 text-txt-light-primary">
                 {formatDateTime(createAt).dateOnly}
               </div>
             </ParagraphLineMask>

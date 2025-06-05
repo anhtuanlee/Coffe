@@ -24,7 +24,7 @@ export default function ProductItem(props: TProduct) {
         </div>
         <div className="flex flex-col gap-2">
           <h3 className="font-title text-24 font-medium text-txt-light-primary">{name}</h3>
-          <div className="line-clamp-2 min-h-12 text-ellipsis text-16 font-light text-txt-light-secondary">
+          <div className="line-clamp-2 min-h-12 text-ellipsis text-16 text-txt-light-secondary">
             {decscription}
           </div>
           <div className="font-title text-20 font-normal text-txt-light-primary">₱ {price}</div>

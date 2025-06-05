@@ -55,7 +55,7 @@ export default function Footer() {
                 </TextMask>
               </div>
               <ParagraphLineFade delayTrigger={delay_trigger._05}>
-                <div className="text-14 font-light text-txt-dark-secondary">
+                <div className="text-14 text-txt-dark-secondary">
                   A new gem in Makati that specializes in serving Authentic Vietnamese foods and
                   drinks.
                 </div>
@@ -151,14 +151,10 @@ export default function Footer() {
       </div>
       <div className="px-10 py-5">
         <div className="flex flex-row justify-between">
-          <div className="text-16 font-light text-txt-dark-secondary">© Viet Lasa Coffee Co.</div>
+          <div className="text-16 text-txt-dark-secondary">© Viet Lasa Coffee Co.</div>
           <div className="flex flex-row gap-3">
-            <div className="hover-line text-16 font-light !text-txt-dark-secondary">
-              All rights reserved.
-            </div>
-            <div className="hover-line text-16 font-light !text-txt-dark-secondary">
-              Privacy & Terms
-            </div>
+            <div className="hover-line text-16 !text-txt-dark-secondary">All rights reserved.</div>
+            <div className="hover-line text-16 !text-txt-dark-secondary">Privacy & Terms</div>
           </div>
         </div>
       </div>
@@ -176,13 +172,13 @@ const ItemSubFooter = ({
   index: number;
 }) => {
   return (
-    <div>
+    <div className="flex flex-col gap-3">
       <ParagraphLineMask delayTrigger={delay_trigger._1 + index / 15}>
-        <div className="text-14 font-light text-txt-dark-tertiary">{label}</div>
+        <div className="text-14 text-txt-dark-tertiary">{label}</div>
       </ParagraphLineMask>
-      <div className="text-14 font-light text-txt-dark-secondary">
+      <div className="flex flex-col gap-2.5 text-14 text-txt-dark-secondary">
         {contents.map((content, i) => (
-          <div className="py-3.5" key={i}>
+          <div key={i}>
             <Fade delayTrigger={index / 15 + i / 15 + delay_trigger._15}>
               <div className="hover-line cursor-pointer text-18 font-normal uppercase tracking-36 !text-txt-dark-primary">
                 {content}

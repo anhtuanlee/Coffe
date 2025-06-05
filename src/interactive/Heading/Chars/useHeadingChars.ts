@@ -56,7 +56,7 @@ export default function useHeadingChars({
       });
   });
 
-  const _playAnimationOut = contextSafe(() => { });
+  const _playAnimationOut = contextSafe(() => {});
 
   useAnimation({
     trigger: refContent,

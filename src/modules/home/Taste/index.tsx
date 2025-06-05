@@ -22,9 +22,7 @@ export default function Taste() {
             <h2 className="font-title text-90 font-normal uppercase text-[#F7F4F0]">viet lasa</h2>
           </HeadingChars>
           <ParagraphLineFade delayTrigger={delay_trigger._1}>
-            <div className="text-20 font-light tracking-[5%] text-[#F7F4F0]">
-              Vietnamese Food & Drinks{' '}
-            </div>
+            <div className="text-20 tracking-[5%] text-[#F7F4F0]">Vietnamese Food & Drinks </div>
           </ParagraphLineFade>
         </div>
         <BoxMaskLeft delayEnter={delay_trigger._15}>

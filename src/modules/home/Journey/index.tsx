@@ -10,7 +10,7 @@ import Fade from '@/interactive/Fade';
 
 export default function Journey() {
   return (
-    <div className="w-full">
+    <div className="w-full bg-bg-light">
       <div className="container grid grid-cols-12 pb-20 pt-[22.5rem]">
         <HeadingContent
           title="the Journal"
@@ -20,7 +20,7 @@ export default function Journey() {
         />
         <div className="col-start-9 -col-end-1 mb-20 mt-14 flex flex-col gap-5">
           <ParagraphLineFade delayTrigger={delay_trigger._15}>
-            <div className="self-end text-right text-16 font-light text-txt-light-secondary">
+            <div className="self-end text-right text-16 text-txt-light-secondary">
               Welcome to Viet Lasa Coffee's Journal. Our latest news, coffee musings and sourcing
               stories.
             </div>

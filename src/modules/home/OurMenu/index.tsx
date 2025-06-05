@@ -135,6 +135,20 @@ const product_food = [
     category: 'bánh mì',
   },
   {
+    name: 'chicken banh mi',
+    price: 265,
+    decscription: 'With pork ham pork roll floss vegetables',
+    image: '/images/banhmi.jpg',
+    category: 'bánh mì',
+  },
+  {
+    name: 'chicken banh mi',
+    price: 265,
+    decscription: 'With pork ham pork roll floss vegetables',
+    image: '/images/banhmi.jpg',
+    category: 'bánh mì',
+  },
+  {
     name: 'fish cake bánh mì',
     price: 225,
     decscription: 'With pork ham pork roll floss vegetables',

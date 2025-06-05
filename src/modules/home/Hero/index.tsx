@@ -32,7 +32,7 @@ export default function Hero(): React.ReactElement {
             </h1>
           </HeadingChars>
           <ParagraphLineFade delayEnter={delay_trigger._1} delayTrigger={delay_trigger._1}>
-            <div className="max-w-[48.5rem] text-center text-16 font-light text-txt-light-secondary">
+            <div className="max-w-[48.5rem] text-center text-16 text-txt-light-secondary">
               Experience the rich flavors of traditional Vietnamese coffee, banh mi, and savory
               sticky rice in the heart of Makati. We believe in preserving traditional Vietnamese
               brewing methods and recipes while creating a warm, welcoming space for our customers

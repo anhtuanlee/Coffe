@@ -62,7 +62,7 @@ export default function useAnimation({
       trl = ScrollTrigger.create({
         trigger: trigger.current,
         onEnter: () => playAnimation(),
-        start: start || `top+=${calcTheshold}% bottom`,
+        start: start || `top+=${calcTheshold}% 90%`,
         horizontal,
         once: true,
         markers,

@@ -68,7 +68,6 @@ export const gRefresh = (timeout = 1000): void => {
   }, timeout);
 };
 
-
 export const handleConvertSize = ({
   width,
   height,
