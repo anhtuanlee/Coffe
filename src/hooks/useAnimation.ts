@@ -14,10 +14,12 @@ import { MutableRefObject, useRef } from 'react';
 
 import { IAnimationProps, IValueHookAnimation } from '@/types/animation';
 import { IAnimationElement } from '@/types/common';
+import gsap from 'gsap';
 
 interface IProps extends IAnimationProps, IValueHookAnimation {
   trigger: MutableRefObject<IAnimationElement | null>;
 }
+gsap.registerPlugin(ScrollTrigger);
 
 export default function useAnimation({
   trigger,
@@ -34,8 +36,8 @@ export default function useAnimation({
   const refObserver = useRef<IntersectionObserver | null>(null);
   const refTime = useRef<NodeJS.Timeout>();
   const isPlayTrigger = useComputedDeps(() => {
-    return (isPlayForPopupState.value && isInPopup) || isPlayState.value;
-  }, [isInPopup]);
+    return (isPlayForPopupState.value) || (isPlayState.value && !isInPopup);
+  }, [isInPopup, isPlayForPopupState.value]);
   const { contextSafe } = useGSAP();
 
   useSignalEffect(() => {
@@ -47,9 +49,19 @@ export default function useAnimation({
     }
   });
 
+  useSignalEffect(() => {
+    if (!isPlayForPopupState.value && isInPopup && refTime.current) {
+      outAnimation?.();
+    } else if (isPlayForPopupState.value && isInPopup && refTime.current) {
+      initAnimation();
+      playAnimation();
+    }
+  });
+
   const onHandleAnimation = contextSafe((): (() => void) => {
     let calcTheshold = threshold || 0;
     let trl: ScrollTrigger | null = null;
+
     if (calcTheshold === 0 && trigger.current) {
       const { height, top } = trigger.current.getBoundingClientRect();
       if (top >= window.innerHeight) {
@@ -92,7 +104,8 @@ export default function useAnimation({
   });
 
   useSignalEffect(() => {
-    const clearHandler = (isPlayTrigger.value && onHandleAnimation()) || null;
+    const clearHandler =
+      (isPlayTrigger.value && !isInPopup && onHandleAnimation()) || null;
     return () => {
       clearHandler && clearHandler();
     };

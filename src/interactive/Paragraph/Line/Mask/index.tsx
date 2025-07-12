@@ -19,24 +19,32 @@ const ParagraphLineMask = ({
   markers,
   isObserver,
   threshold,
+  isInPopup,
 }: ParagraphLineMaskProps): ReactElement => {
   const refContent = useRef<typeRef>(null);
 
-  const { animationIn: playAnimation, animationHide: initAnimation } = useParagraphLineMask({
+  const {
+    animationIn: playAnimation,
+    animationHide: initAnimation,
+    animationOut: outAnimation,
+  } = useParagraphLineMask({
     refContent,
     delayTrigger,
     delayEnter,
+    isInPopup,
   });
 
   useAnimation({
     trigger: refContent,
     initAnimation,
     playAnimation,
+    outAnimation,
     threshold,
     horizontal,
     isObserver,
     start,
     markers,
+    isInPopup,
   });
 
   if (!React.isValidElement(children)) {

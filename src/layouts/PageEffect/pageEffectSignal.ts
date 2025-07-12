@@ -1,6 +1,7 @@
 import { signal } from '@preact/signals-react';
 
 import { ITypeEffect } from '@/types/common';
+import { isOpenHeader } from '../Header/HeaderProvier';
 
 const toggleState = signal(false);
 const outCompleteState = signal(false);
@@ -35,10 +36,12 @@ export default function usePageEffectSignal(): IValues {
     setTypeEffect: (type: ITypeEffect): void => {
       typeState.value = type;
     },
-    reset: (): void => {
+    reset: async (): Promise<void> => {
+      isOpenHeader.value = false;
       outCompleteState.value = false;
       inCompleteState.value = false;
       toggleState.value = false;
+
     },
   };
 }

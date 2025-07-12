@@ -39,7 +39,7 @@ export default function Instagram() {
             <div className="text-20 uppercase text-txt-light-primary">Follow Our Journey</div>
           </ParagraphLineMask>
           <HeadingChars delayTrigger={delay_trigger._1}>
-            <h2 className="uppercas hover-line size-line-3 font-title text-56 font-medium !text-txt-light-primary">
+            <h2 className="uppercas hover-line size-line-3 font-title text-56 font-semibold !text-txt-light-primary">
               @vietlasa
             </h2>
           </HeadingChars>

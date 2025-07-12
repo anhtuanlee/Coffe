@@ -2,7 +2,9 @@
   --p: 0%;
   --p-ac: 100%;
   --size-line: max(1px, 0.0625rem);
-  --padding-container: 4rem;
+  --padding-container: 5rem;
+  --max-container: 1728px;
+  --size-open-container: calc((abs(100vw - var(--max-container)) / 2 + var(--padding-container)));
   --easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
   --easeInOutQuart: cubic-bezier(0.76, 0, 0.24, 1);
   --easeInOutCubic: cubic-bezier(0.65, 0, 0.35, 1);
@@ -11,6 +13,7 @@
   --bg-sf: #1c1a17;
   --bd-dark-strong: rgba(103, 102, 101, 1);
   --bd-dark-soft: #32302e;
+  --bd-light-strong: #ffffff;
   --bg-primary: #f0e9e1;
   --bg-dark: #2e2a26;
   --bg-light: #f7f4f0;

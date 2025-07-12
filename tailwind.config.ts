@@ -90,10 +90,22 @@ const config: Config = {
           lineHeight: '1.0625',
         },
       ],
+      '80': [
+        '5rem',
+        {
+          lineHeight: '1',
+        },
+      ],
       '90': [
         '5.625rem',
         {
           lineHeight: '1',
+        },
+      ],
+      '100': [
+        '6.25rem',
+        {
+          lineHeight: '1.2',
         },
       ],
       '110': [

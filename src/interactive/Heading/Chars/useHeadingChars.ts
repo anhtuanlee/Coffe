@@ -2,7 +2,7 @@ import { useGSAP } from '@gsap/react';
 import useAnimation from '@Hooks/useAnimation';
 import { getDelay } from '@Utils/uiHelper';
 import { gsap } from 'gsap';
-import { MutableRefObject, useRef } from 'react';
+import { MutableRefObject, useCallback, useRef } from 'react';
 import SplitType from 'split-type';
 
 import s from './styles.module.scss';
@@ -17,10 +17,11 @@ interface IUseHeadingChars {
   horizontal?: boolean;
   duration?: number;
   onComplete?: () => void;
+  isInPopup?: boolean;
 }
 
 export default function useHeadingChars({
-  refContent,
+  refContent, isInPopup,
   delayTrigger = 0,
   delayEnter = 0,
   offset = 0,
@@ -29,7 +30,11 @@ export default function useHeadingChars({
   horizontal,
   onComplete,
   duration,
-}: IUseHeadingChars): void {
+}: IUseHeadingChars): {
+  initAnimation: () => void;
+  playAnimation: () => void;
+  outAnimation: () => void;
+} {
   const { contextSafe } = useGSAP();
   const refText = useRef<SplitType | null>(null);
 
@@ -41,9 +46,11 @@ export default function useHeadingChars({
     gsap.killTweensOf(refText.current?.chars);
     gsap.set(refText.current?.chars, { y: '105%' });
   });
-
+  const getDelayCallBack = useCallback((): number => {
+    return getDelay({ refContentCurrent: refContent.current, delayEnter, delayTrigger, isInPopup });
+  }, []);
   const playAnimation = contextSafe(() => {
-    const delay = getDelay({ refContentCurrent: refContent.current, delayEnter, delayTrigger });
+    const delay = getDelayCallBack();
     refText.current?.chars &&
       gsap.to(refText.current.chars, {
         stagger: 0.015,
@@ -56,14 +63,23 @@ export default function useHeadingChars({
       });
   });
 
-  const _playAnimationOut = contextSafe(() => {});
+  const outAnimation = contextSafe(() => {
+    const delay = getDelayCallBack();
+    refText.current?.chars &&
+      gsap.to(refText.current.chars, {
+        stagger: 0.015,
+        y: '-105%',
+        duration: duration || 1.6,
+        ease: 'expo',
+        delay: offset ? -offset : delay,
+        overwrite: 'auto',
+        onComplete,
+      });
+  });
 
-  useAnimation({
-    trigger: refContent,
+  return {
     initAnimation,
     playAnimation,
-    isObserver,
-    start,
-    horizontal,
-  });
+    outAnimation,
+  };
 }

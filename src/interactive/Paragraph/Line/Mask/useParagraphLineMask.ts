@@ -12,12 +12,14 @@ import s from './styles.module.scss';
 
 interface IUseParagraphScroller extends IAnimationHook {
   refContent: MutableRefObject<IAnimationElement | null>;
+  isInPopup?: boolean;
 }
 
 export default function useParagraphLineMask({
   refContent,
   delayTrigger,
   delayEnter,
+  isInPopup,
 }: IUseParagraphScroller): {
   animationHide: () => void;
   animationIn: (delay?: number, duration?: number) => void;
@@ -45,7 +47,7 @@ export default function useParagraphLineMask({
   });
 
   const getDelayCallBack = useCallback((): number => {
-    return getDelay({ refContentCurrent: refContent.current, delayEnter, delayTrigger });
+    return getDelay({ refContentCurrent: refContent.current, delayEnter, delayTrigger, isInPopup });
   }, [targetScroller]);
 
   const animationIn = contextSafe((delayIn?: number, duration?: number) => {
@@ -105,14 +107,15 @@ export default function useParagraphLineMask({
         grWord[rows].push(word);
       });
 
+      const delay = getDelayCallBack();
       grWord.forEach((grW, key) => {
         grW.length &&
           gsap.to(grW, {
-            yPercent: 108,
-            delay: -(key / 10),
+            yPercent: -108,
+            delay: delay,
             ease: 'power3.out',
-            duration: duration || 0.8,
-            stagger: 0.015,
+            duration: 0.8,
+            stagger: 0.01,
             overwrite: 'auto',
           });
       });

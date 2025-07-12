@@ -2,6 +2,7 @@
 
 import useHeadingChars from '@Interactive/Heading/Chars/useHeadingChars';
 import React, { PropsWithChildren, ReactElement, useRef } from 'react';
+import useAnimation from '@/hooks/useAnimation';
 
 interface ParagraphLineMaskProps extends PropsWithChildren {
   delayEnter?: number;
@@ -11,6 +12,7 @@ interface ParagraphLineMaskProps extends PropsWithChildren {
   horizontal?: boolean;
   onComplete?: () => void;
   duration?: number;
+  isInPopup?: boolean;
 }
 
 type typeRef = HTMLDivElement | HTMLSpanElement | HTMLHeadingElement;
@@ -24,10 +26,11 @@ export default function HeadingChars({
   horizontal,
   onComplete,
   duration,
+  isInPopup,
 }: ParagraphLineMaskProps): ReactElement {
   const refContent = useRef<typeRef>(null);
 
-  useHeadingChars({
+  const { initAnimation, playAnimation, outAnimation } = useHeadingChars({
     refContent,
     delayTrigger,
     delayEnter,
@@ -35,7 +38,20 @@ export default function HeadingChars({
     start,
     horizontal,
     onComplete,
+    isInPopup,
   });
+
+  useAnimation({
+    trigger: refContent,
+    initAnimation,
+    playAnimation,
+    outAnimation,
+    isObserver,
+    start,
+    horizontal,
+    isInPopup,
+  });
+
   if (!React.isValidElement(children)) {
     return <div>Error: Invalid children element</div>;
   }

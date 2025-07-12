@@ -19,7 +19,6 @@ const ROOMS = [
   '/images/room_4.jpg',
 ];
 export default function Hero(): React.ReactElement {
-  const storyRef = useRef<HTMLDivElement>(null);
   const wrapSlideRef = useRef<HTMLDivElement>(null);
 
   return (

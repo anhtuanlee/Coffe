@@ -30,17 +30,6 @@ body {
   --gap-x: 2rem;
 }
 
-.container {
-  padding-left: 2rem;
-  padding-right: 2rem;
-  max-width: 100%;
-
-  @include pcSmall {
-    padding-left: 8rem;
-    padding-right: 8rem;
-  }
-}
-
 h1,
 h2,
 h3,
@@ -197,4 +186,14 @@ html {
 
 .rulermode-rectangle {
   background-color: rgba(255, 0, 0, 0.431) !important;
+}
+
+.dark:not(.bg-bg-light) {
+  --bd-dark-strong: var(--bd-light-strong);
+  --bd-dark-soft: var(--bd-light-strong);
+  --text-light-primary: var(--text-dark-primary);
+  --text-light-label: var(--text-dark-label);
+  --text-light-secondary: var(--text-dark-secondary);
+  --text-light-tertiary: var(--text-dark-tertiary);
+  --text-light-white: var(--text-dark-white);
 }

@@ -1,28 +1,27 @@
 import './footer.scss';
 
+import BoxCircle from '@/components/BoxCircle';
 import ButtonOutline from '@/components/ButtonOutline';
 import Facebook from '@/components/Icons/facebook';
 import Insta from '@/components/Icons/insta';
-import LogoFooter from '@/components/Icons/logo_footer';
 import Tiktok from '@/components/Icons/tiktok';
 import ImagePreload from '@/components/ImagePreload';
 import LinkEffect from '@/components/LinkEffect';
-import { ROUTE } from '@/constants/data-route';
+import { ROUTE, ROUTE_SOCIAL } from '@/constants/data-route';
 import { delay_trigger } from '@/constants/delay';
+import { useIsInViewport } from '@/hooks/useIsInViewport';
+import useMouse from '@/hooks/useMouse';
 import Fade from '@/interactive/Fade';
 import HeadingChars from '@/interactive/Heading/Chars';
 import TextMask, { IHover } from '@/interactive/Hover/TextMask';
 import Line from '@/interactive/Line';
 import ParagraphLineFade from '@/interactive/Paragraph/Line/Fade';
 import ParagraphLineMask from '@/interactive/Paragraph/Line/Mask';
+import { useSignalEffect } from '@preact/signals-react';
 import Link from 'next/link';
 import { useRef } from 'react';
 import ButtonTop from './ButtonTop';
-import useMouse from '@/hooks/useMouse';
-import { useSignalEffect } from '@preact/signals-react';
-import { useIsInViewport } from '@/hooks/useIsInViewport';
-import BoxSnap from '@/interactive/BoxSnap/Bottom';
-import BoxCircle from '@/components/BoxCircle';
+import { SUB_CONTENTS } from '@/constants/infor';
 
 export default function Footer() {
   const refFuns = useRef<IHover>();
@@ -79,9 +78,10 @@ export default function Footer() {
                 ))}
               </div>
               <div className="flex flex-row gap-2">
-                {LINK_SOCIAL.map((item, index) => {
+                {ROUTE_SOCIAL.map((item, index) => {
+                  const Icon = item.icon;
                   return (
-                    <Link href={item.href} key={index}>
+                    <Link href={item.path} key={index} target="_blank">
                       <BoxCircle
                         className="aspect-square w-12"
                         lerpIn={0.05}
@@ -91,7 +91,7 @@ export default function Footer() {
                       >
                         <div className="flex items-center justify-center rounded-full p-3">
                           <div data-child-inner className="h-6 w-6">
-                            {item.icon()}
+                            <Icon />
                           </div>
                         </div>
                       </BoxCircle>
@@ -162,26 +162,34 @@ export default function Footer() {
   );
 }
 
-const ItemSubFooter = ({
+export const ItemSubFooter = ({
   label,
   contents,
   index,
+  isInPopup,
 }: {
   label: string;
   contents: string[];
   index: number;
+  isInPopup?: boolean;
 }) => {
   return (
     <div className="flex flex-col gap-3">
-      <ParagraphLineMask delayTrigger={delay_trigger._1 + index / 15}>
+      <ParagraphLineMask delayTrigger={delay_trigger._1 + index / 15} isInPopup={isInPopup}>
         <div className="text-14 text-txt-dark-tertiary">{label}</div>
       </ParagraphLineMask>
       <div className="flex flex-col gap-2.5 text-14 text-txt-dark-secondary">
         {contents.map((content, i) => (
           <div key={i}>
-            <Fade delayTrigger={index / 15 + i / 15 + delay_trigger._15}>
-              <div className="hover-line cursor-pointer text-18 font-normal uppercase tracking-36 !text-txt-dark-primary">
-                {content}
+            <Fade
+              delayTrigger={index / 15 + i / 15 + delay_trigger._15}
+              isInPopup={isInPopup}
+              from="1.2rem"
+            >
+              <div>
+                <div className="hover-line cursor-pointer text-18 font-normal uppercase tracking-36 !text-txt-dark-primary">
+                  {content}
+                </div>
               </div>
             </Fade>
           </div>
@@ -190,31 +198,3 @@ const ItemSubFooter = ({
     </div>
   );
 };
-const SUB_CONTENTS = [
-  {
-    label: 'Find us',
-    contents: ['1085c Chino Roces Ave, Makati Metro Manila, Philippines'],
-  },
-  {
-    label: 'Get in touch',
-    contents: ['+63 961 903 5560', 'info@vietlasa.ph'],
-  },
-  {
-    label: 'Open hours',
-    contents: ['everyday 10:30am Til 8:00pm'],
-  },
-];
-const LINK_SOCIAL = [
-  {
-    icon: () => <Tiktok />,
-    href: 'https://www.tiktok.com/@vietlasa',
-  },
-  {
-    icon: () => <Facebook />,
-    href: 'https://www.facebook.com/vietlasa',
-  },
-  {
-    icon: () => <Insta />,
-    href: 'https://www.instagram.com/vietlasa',
-  },
-];

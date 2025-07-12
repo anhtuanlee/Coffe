@@ -13,14 +13,13 @@ import { gRefresh } from '@Utils/uiHelper';
 import cn from 'classnames';
 import { gsap } from 'gsap';
 import React, { useRef } from 'react';
-
 import s from './styles.module.scss';
+
 export default function PageSimpleEffect(): React.ReactElement {
   const { setInComplete, reset } = usePageEffectSignal();
   const { reset: resetLoader } = useLoadManageSignal();
   const { play } = useAnimationSignal();
   const refContent = useRef(null);
-
   const { contextSafe } = useGSAP();
 
   const animationIn = contextSafe(() => {

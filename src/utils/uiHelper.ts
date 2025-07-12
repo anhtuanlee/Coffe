@@ -16,15 +16,17 @@ export const getDelay = ({
   refContentCurrent,
   delayEnter = 0,
   delayTrigger = 0,
+  isInPopup = false,
 }: {
   refContentCurrent: IAnimationElement | null;
   delayEnter?: number;
   delayTrigger?: number;
+  isInPopup?: boolean;
 }): number => {
   if (!refContentCurrent) return 0;
 
   const { top } = refContentCurrent.getBoundingClientRect();
-  if (top > window.innerHeight || checkPageScrolled()) {
+  if (top > window.innerHeight || checkPageScrolled() || isInPopup) {
     return delayTrigger;
   }
   return delayEnter + ANIMATION_DELAY_ENTER;

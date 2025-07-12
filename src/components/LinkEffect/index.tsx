@@ -8,12 +8,14 @@ type Props = {
   className?: string;
   target?: string;
   children: React.ReactNode;
+  onClick?: () => void;
 };
 export default function LinkEffect({
   href,
   className,
   target,
   children,
+  onClick,
 }: Props): React.ReactElement {
   const { routerEffect } = useRouterEffect();
   return (
@@ -22,7 +24,7 @@ export default function LinkEffect({
       target={target}
       className={className}
       onClick={(e): void => {
-        routerEffect({ url: href });
+        routerEffect({ url: href, onClick });
         e.preventDefault();
       }}
       passHref

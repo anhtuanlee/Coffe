@@ -30,6 +30,7 @@ export default function Line({
   direction = 'bottom',
   isCenter = false,
   isStatic = false,
+  isInPopup,
 }: IProp): React.ReactElement {
   const isHorizonal = direction === 'top' || direction === 'bottom';
   const lineRef = useRef<HTMLDivElement>(null);
@@ -51,7 +52,7 @@ export default function Line({
   });
 
   const getDelayCallBack = useCallback((): number => {
-    return getDelay({ refContentCurrent: lineRef.current, delayEnter, delayTrigger });
+    return getDelay({ refContentCurrent: lineRef.current, delayEnter, delayTrigger, isInPopup });
   }, [lineRef]);
 
   const playAnimation = contextSafe((): void => {
@@ -75,15 +76,37 @@ export default function Line({
     }
   });
 
+  const outAnimation = contextSafe(() => {
+    const delay = getDelayCallBack();
+    if (!isStatic) {
+      if (isHorizonal) {
+        gsap.to(lineRef.current, {
+          scaleX: 0,
+          transformOrigin: isCenter ? 'center' : 'left',
+          ease: 'power3.out',
+          duration: duration || 1.2,
+          delay,
+        });
+      } else {
+        gsap.to(lineRef.current, {
+          scaleY: 0,
+          transformOrigin: isCenter ? 'center' : 'top',
+          ease: 'power3.out',
+          duration: duration || 1.2,
+          delay,
+        });
+      }
+    }
+  });
+
   useAnimation({
     trigger: lineRef,
     initAnimation,
     playAnimation,
+    outAnimation,
     isObserver: true,
-    threshold: 100,
-    start: 'top 90%',
+    isInPopup,
   });
-
   return (
     <div
       ref={lineRef}

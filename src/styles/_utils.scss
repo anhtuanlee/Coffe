@@ -32,21 +32,19 @@ html.lenis {
 
 .container {
   max-width: unset !important;
-  padding-left: rem(20px) !important;
-  padding-right: rem(20px) !important;
   margin-inline: auto;
-  --gap-x: #{rem(20px)} !important;
+  --gap-x: 2rem;
+  --padding-container: 1.25rem;
+  padding-inline: var(--padding-container);
 
   @include min-tablet {
+    --gap-x: 2rem !important;
+    --padding-container: 3.2rem;
     max-width: unset !important;
-    padding-left: rem(32px) !important;
-    padding-right: rem(32px) !important;
-    --gap-x: #{rem(20px)} !important;
   }
   @include pcSmall {
+    --padding-container: 5rem;
     margin-inline: auto;
-    max-width: 1728px !important;
-    padding-left: rem(40px) !important;
-    padding-right: rem(40px) !important;
+    max-width: var(--max-container) !important;
   }
 }

@@ -23,26 +23,30 @@ export default function Fade({
   start,
   horizontal,
   threshold,
+  isInPopup,
 }: IFade): React.ReactElement {
   const refContent = useRef<IAnimationElement>(null);
 
-  const { initAnimation, playAnimation } = useFade({
+  const { initAnimation, playAnimation, outAnimation } = useFade({
     refContent,
     delayTrigger,
     delayEnter,
     direction,
     duration,
     from,
+    isInPopup,
   });
 
   useAnimation({
     trigger: refContent,
     initAnimation,
     playAnimation,
+    outAnimation,
     isObserver,
     threshold,
     start,
     horizontal,
+    isInPopup,
   });
 
   if (!React.isValidElement(children)) {

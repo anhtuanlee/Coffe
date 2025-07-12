@@ -11,6 +11,7 @@ interface ParagraphLineMaskProps extends PropsWithChildren {
   type?: TypesList;
   start?: string;
   horizontal?: boolean;
+  isInPopup?: boolean;
 }
 
 type typeRef = HTMLDivElement | HTMLSpanElement | HTMLHeadingElement | HTMLParagraphElement;
@@ -22,20 +23,23 @@ export default function ParagraphLineFade({
   type,
   start,
   horizontal,
+  isInPopup,
 }: ParagraphLineMaskProps): ReactElement {
   const refContent = useRef<typeRef>(null);
 
-  const { animationIn, animationHide } = useParagraphLineFade({
+  const { animationIn, animationHide, animationOut } = useParagraphLineFade({
     refContent,
     delayTrigger,
     delayEnter,
     type,
+    isInPopup,
   });
 
   useAnimation({
     trigger: refContent,
     initAnimation: animationHide,
     playAnimation: animationIn,
+    outAnimation: animationOut,
     threshold: 20,
     start,
     horizontal,

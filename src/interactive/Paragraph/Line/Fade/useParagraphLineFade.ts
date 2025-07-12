@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react';
 import { getDelay } from '@Utils/uiHelper';
 import { gsap } from 'gsap';
-import { MutableRefObject, useRef } from 'react';
+import { MutableRefObject, useCallback, useRef } from 'react';
 import SplitType, { TypesList } from 'split-type';
 
 import { IAnimationElement } from '@/types/common';
@@ -13,6 +13,7 @@ interface IUseParagraphScroller {
   delayTrigger?: number;
   delayEnter?: number;
   type?: TypesList;
+  isInPopup?: boolean;
 }
 
 export default function useParagraphLineFade({
@@ -20,13 +21,17 @@ export default function useParagraphLineFade({
   delayTrigger,
   delayEnter,
   type,
+  isInPopup
 }: IUseParagraphScroller): {
   animationHide: () => void;
   animationIn: (delay?: number) => void;
+  animationOut: () => void;
 } {
   const { contextSafe } = useGSAP();
   const refText = useRef<SplitType | null>(null);
-
+  const getDelayCallBack = useCallback((): number => {
+    return getDelay({ refContentCurrent: refContent.current, delayEnter, delayTrigger, isInPopup });
+  }, []);
   const pageHide = contextSafe(() => {
     refContent.current?.classList.add(s.lineFade);
     refText.current = new SplitType(refContent.current as HTMLElement, {
@@ -39,7 +44,7 @@ export default function useParagraphLineFade({
   const animationIn = contextSafe((delayIn?: number) => {
     const mDelayIn = typeof delayIn !== 'number' ? 0 : delayIn;
 
-    const delay = getDelay({ refContentCurrent: refContent.current, delayEnter, delayTrigger });
+    const delay = getDelayCallBack();
     refText.current?.lines &&
       refText.current?.lines.forEach((lines, key) => {
         const char = lines.querySelectorAll('.word');
@@ -55,5 +60,21 @@ export default function useParagraphLineFade({
       });
   });
 
-  return { animationHide: pageHide, animationIn };
+  const animationOut = contextSafe(() => {
+    const delay = getDelayCallBack();
+    refText.current?.lines &&
+      refText.current?.lines.forEach((lines, key) => {
+        const char = lines.querySelectorAll('.word');
+        gsap.to(char, {
+          y: '-105%',
+          opacity: 1,
+          stagger: 0.025,
+          delay: (delay) + key / 8,
+          ease: 'power3.out',
+          duration: 1.2,
+          overwrite: 'auto',
+        });
+      });
+  });
+  return { animationHide: pageHide, animationIn, animationOut };
 }

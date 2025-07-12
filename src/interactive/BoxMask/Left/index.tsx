@@ -23,12 +23,13 @@ export default function BoxMaskLeft({
   delayEnter,
   delayTrigger,
   isObserver,
+  isInPopup,
   className,
 }: IBoxMaskLeft): React.ReactElement {
   const refTrigger = useRef<HTMLDivElement>(null);
   const refMaskWrapper = useRef<HTMLDivElement>(null);
   const refMaskElement = useRef<HTMLDivElement>(null);
-  const { initAnimation, playAnimation } = useBoxMaskLeft({
+  const { initAnimation, playAnimation, outAnimation } = useBoxMaskLeft({
     refTrigger,
     refMaskWrapper,
     refMaskElement,
@@ -36,6 +37,7 @@ export default function BoxMaskLeft({
     duration,
     delayEnter,
     delayTrigger,
+    isInPopup,
   });
 
   useAnimation({
@@ -44,8 +46,10 @@ export default function BoxMaskLeft({
     start,
     initAnimation,
     playAnimation,
+    outAnimation,
     horizontal,
     isObserver,
+    isInPopup,
   });
 
   if (!React.isValidElement(children)) {

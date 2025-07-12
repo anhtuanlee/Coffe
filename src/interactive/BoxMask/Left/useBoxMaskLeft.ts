@@ -1,7 +1,7 @@
 import { useGSAP } from '@gsap/react';
 import { getDelay } from '@Utils/uiHelper';
 import { gsap } from 'gsap';
-import { MutableRefObject } from 'react';
+import { MutableRefObject, useCallback } from 'react';
 
 import { IAnimationHook, IValueHookAnimation } from '@/types/animation';
 
@@ -11,6 +11,7 @@ interface IUseBoxMaskLeft extends IAnimationHook {
   refTrigger: MutableRefObject<HTMLDivElement | null>;
   refMaskWrapper: MutableRefObject<HTMLDivElement | null>;
   refMaskElement: MutableRefObject<HTMLDivElement | null>;
+  isInPopup?: boolean;
 }
 
 export default function useBoxMaskLeft({
@@ -21,6 +22,7 @@ export default function useBoxMaskLeft({
   duration,
   delayTrigger = 0,
   delayEnter = 0,
+  isInPopup,
 }: IUseBoxMaskLeft): IValueHookAnimation {
   const { contextSafe } = useGSAP();
 
@@ -39,18 +41,25 @@ export default function useBoxMaskLeft({
   const initAnimation = contextSafe(() => {
     gsap.set(refMaskElement.current, { scaleX: 1.2, scaleY: 1.2 });
   });
-
+  const getDelayCallBack = useCallback((): number => {
+    return getDelay({ refContentCurrent: refTrigger.current, delayEnter, delayTrigger, isInPopup });
+  }, []);
   const playAnimation = contextSafe(() => {
-    const delay = getDelay({
-      refContentCurrent: refTrigger.current,
-      delayTrigger,
-      delayEnter,
-    });
+    const delay = getDelayCallBack();
     gsap.to([refMaskElement.current], {
       delay,
       ...options,
     });
   });
 
-  return { initAnimation, playAnimation };
+  const outAnimation = contextSafe(() => {
+    const delay = getDelayCallBack();
+    gsap.to([refMaskElement.current], {
+      ...options,
+      delay: delay * 1.5,
+      duration: 1.6,
+      scaleX: 1.3, scaleY: 1.3
+    });
+  });
+  return { initAnimation, playAnimation, outAnimation };
 }
