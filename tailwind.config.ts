@@ -140,6 +140,9 @@ const config: Config = {
         '13': 'repeat(13, minmax(0, 1fr))',
         '16': 'repeat(16, minmax(0, 1fr))',
       },
+      transitionDuration: {
+        '400': '400ms',
+      },
       colors: {
         bg: {
           sf: 'var(--bg-sf)',
@@ -168,6 +171,8 @@ const config: Config = {
           secondary: 'var(--text-light-secondary)',
           'dark-strong': 'var(--bd-dark-strong)',
           'dark-soft': 'var(--bd-dark-soft)',
+          'light-soft': 'var(--bd-light-soft)',
+          'light-strong': 'var(--bd-light-strong)',
         },
       },
     },

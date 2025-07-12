@@ -36,7 +36,7 @@ export default function useAnimation({
   const refObserver = useRef<IntersectionObserver | null>(null);
   const refTime = useRef<NodeJS.Timeout>();
   const isPlayTrigger = useComputedDeps(() => {
-    return (isPlayForPopupState.value) || (isPlayState.value && !isInPopup);
+    return isPlayForPopupState.value || (isPlayState.value && !isInPopup);
   }, [isInPopup, isPlayForPopupState.value]);
   const { contextSafe } = useGSAP();
 
@@ -104,8 +104,7 @@ export default function useAnimation({
   });
 
   useSignalEffect(() => {
-    const clearHandler =
-      (isPlayTrigger.value && !isInPopup && onHandleAnimation()) || null;
+    const clearHandler = (isPlayTrigger.value && !isInPopup && onHandleAnimation()) || null;
     return () => {
       clearHandler && clearHandler();
     };

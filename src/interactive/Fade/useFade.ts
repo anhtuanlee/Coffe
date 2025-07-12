@@ -19,7 +19,8 @@ export default function useFade({
   delayTrigger,
   delayEnter,
   duration = 0.8,
-  from = '2rem', isInPopup
+  from = '2rem',
+  isInPopup,
 }: IUseFade): IValueHookAnimation {
   const { contextSafe } = useGSAP();
 

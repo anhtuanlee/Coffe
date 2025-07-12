@@ -7,6 +7,7 @@ import React, { forwardRef, useImperativeHandle, useRef } from 'react';
 
 type TButtonOutline = {
   children: React.ReactNode;
+  type?: 'button' | 'submit' | 'reset';
 } & React.HTMLAttributes<HTMLButtonElement>;
 export type TButtonOutlineRef = {
   onClick: () => void;

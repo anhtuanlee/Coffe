@@ -1,12 +1,13 @@
-import Facebook from "@/components/Icons/facebook";
-import Insta from "@/components/Icons/insta";
-import Tiktok from "@/components/Icons/tiktok";
+import Facebook from '@/components/Icons/facebook';
+import Insta from '@/components/Icons/insta';
+import Tiktok from '@/components/Icons/tiktok';
 
 export const ROUTE = {
   MENU: '/menu',
   ABOUT: '/about',
   JOURNAL: '/journal',
   CONTACTS: '/contacts',
+  PRIVACY_POLICY: '/privacy-policy',
 };
 
 export const ROUTE_MENU = [
@@ -39,7 +40,6 @@ export const ROUTE_SOCIAL = [
     name: 'Facebook',
     path: 'https://www.facebook.com/vietlasa/',
     icon: Facebook,
-
   },
   {
     name: 'Instagram',

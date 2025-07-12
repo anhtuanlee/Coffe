@@ -58,7 +58,8 @@ export default function useBoxMaskLeft({
       ...options,
       delay: delay * 1.5,
       duration: 1.6,
-      scaleX: 1.3, scaleY: 1.3
+      scaleX: 1.3,
+      scaleY: 1.3,
     });
   });
   return { initAnimation, playAnimation, outAnimation };

@@ -21,7 +21,7 @@ export default function useParagraphLineFade({
   delayTrigger,
   delayEnter,
   type,
-  isInPopup
+  isInPopup,
 }: IUseParagraphScroller): {
   animationHide: () => void;
   animationIn: (delay?: number) => void;
@@ -69,7 +69,7 @@ export default function useParagraphLineFade({
           y: '-105%',
           opacity: 1,
           stagger: 0.025,
-          delay: (delay) + key / 8,
+          delay: delay + key / 8,
           ease: 'power3.out',
           duration: 1.2,
           overwrite: 'auto',

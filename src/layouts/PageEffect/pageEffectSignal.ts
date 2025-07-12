@@ -41,7 +41,6 @@ export default function usePageEffectSignal(): IValues {
       outCompleteState.value = false;
       inCompleteState.value = false;
       toggleState.value = false;
-
     },
   };
 }

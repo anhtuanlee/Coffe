@@ -154,7 +154,9 @@ export default function Footer() {
           <div className="text-16 text-txt-dark-secondary">© Viet Lasa Coffee Co.</div>
           <div className="flex flex-row gap-3">
             <div className="hover-line text-16 !text-txt-dark-secondary">All rights reserved.</div>
-            <div className="hover-line text-16 !text-txt-dark-secondary">Privacy & Terms</div>
+            <LinkEffect href={ROUTE.PRIVACY_POLICY}>
+              <div className="hover-line text-16 !text-txt-dark-secondary">Privacy & Terms</div>
+            </LinkEffect>
           </div>
         </div>
       </div>
@@ -167,18 +169,24 @@ export const ItemSubFooter = ({
   contents,
   index,
   isInPopup,
+  isDark,
 }: {
   label: string;
   contents: string[];
   index: number;
+  isDark?: boolean;
   isInPopup?: boolean;
 }) => {
   return (
     <div className="flex flex-col gap-3">
       <ParagraphLineMask delayTrigger={delay_trigger._1 + index / 15} isInPopup={isInPopup}>
-        <div className="text-14 text-txt-dark-tertiary">{label}</div>
+        <div className={`text-14 ${isDark ? 'text-txt-light-tertiary' : 'text-txt-dark-tertiary'}`}>
+          {label}
+        </div>
       </ParagraphLineMask>
-      <div className="flex flex-col gap-2.5 text-14 text-txt-dark-secondary">
+      <div
+        className={`flex flex-col gap-2.5 text-14 ${isDark ? 'text-txt-light-secondary' : 'text-txt-dark-secondary'}`}
+      >
         {contents.map((content, i) => (
           <div key={i}>
             <Fade
@@ -187,7 +195,9 @@ export const ItemSubFooter = ({
               from="1.2rem"
             >
               <div>
-                <div className="hover-line cursor-pointer text-18 font-normal uppercase tracking-36 !text-txt-dark-primary">
+                <div
+                  className={`hover-line cursor-pointer text-18 font-normal uppercase tracking-36 ${isDark ? '!text-txt-light-primary' : '!text-txt-dark-primary'}`}
+                >
                   {content}
                 </div>
               </div>

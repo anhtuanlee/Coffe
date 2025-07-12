@@ -21,7 +21,8 @@ interface IUseHeadingChars {
 }
 
 export default function useHeadingChars({
-  refContent, isInPopup,
+  refContent,
+  isInPopup,
   delayTrigger = 0,
   delayEnter = 0,
   offset = 0,

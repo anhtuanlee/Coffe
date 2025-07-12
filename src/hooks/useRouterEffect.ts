@@ -4,7 +4,14 @@ import { usePathname } from 'next/navigation';
 import { ITypeEffect } from '@/types/common';
 
 export default function useRouterEffect(): {
-  routerEffect: ({ url, onClick }: { url: string; typeEffect?: ITypeEffect; onClick?: () => void }) => void;
+  routerEffect: ({
+    url,
+    onClick,
+  }: {
+    url: string;
+    typeEffect?: ITypeEffect;
+    onClick?: () => void;
+  }) => void;
 } {
   const pathName = usePathname();
   const { animationIn } = usePageEffectSignal();
